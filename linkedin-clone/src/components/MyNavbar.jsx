@@ -1,14 +1,34 @@
-import { Navbar, Nav, Container, Form, FormControl, Badge } from "react-bootstrap";
-import { House, People, Briefcase, ChatDots, Bell, Grid3x3Gap } from "react-bootstrap-icons";
+import { Navbar, Nav, Container, Form, FormControl, Badge, InputGroup, Row, Col } from "react-bootstrap";
+import {
+  Bullseye,
+  PlayBtn,
+  House,
+  People,
+  Briefcase,
+  ChatDots,
+  Bell,
+  Grid3x3Gap,
+  Search,
+  Compass,
+  PeopleFill,
+  BarChartFill,
+  CardChecklist,
+  PlusLg,
+} from "react-bootstrap-icons";
 import { useState, useRef, useEffect } from "react";
 
 const MyNavbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
+  const [showBusiness, setShowBusiness] = useState(false);
+  const businessRef = useRef(null);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setShowMenu(false);
+      }
+      if (businessRef.current && !businessRef.current.contains(event.target)) {
+        setShowBusiness(false);
       }
     };
 
@@ -27,7 +47,12 @@ const MyNavbar = () => {
           </Navbar.Brand>
 
           <Form className="d-none d-md-block ms-0">
-            <FormControl type="search" placeholder="Cerca" className="rounded-pill px-3" style={{ width: "250px" }} />
+            <InputGroup style={{ width: "250px" }}>
+              <InputGroup.Text className="bg-white border-end-0 rounded-start-pill ps-3">
+                <Search size={16} className="text-muted" />
+              </InputGroup.Text>
+              <FormControl type="search" placeholder="Cerca" className="border-start-0 rounded-end-pill px-2" />
+            </InputGroup>
           </Form>
         </div>
 
@@ -130,15 +155,136 @@ const MyNavbar = () => {
                 </div>
               )}
             </div>
-            <Nav.Link href="#" className="mx-4 d-flex flex-column align-items-center">
-              <Grid3x3Gap size={20} className="nav-icon" />
-              <small>Per le aziende</small>
-            </Nav.Link>
+            <div
+              ref={businessRef}
+              className="mx-2 position-relative d-flex flex-column align-items-center text-muted border-start ps-3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setShowBusiness(!showBusiness)}
+            >
+              <Grid3x3Gap size={24} />
+              <small style={{ fontSize: "12px" }}>Per le aziende ▾</small>
+
+              {showBusiness && (
+                <div
+                  className="position-absolute bg-white shadow-lg rounded border p-4 text-dark"
+                  style={{ top: "55px", right: "0", width: "650px", zIndex: 2000, cursor: "default" }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="d-flex justify-content-between align-items-start mb-4">
+                    <h5 className="fw-bold m-0" style={{ fontSize: "18px" }}>
+                      Per le aziende
+                    </h5>
+                    <button type="button" className="btn-close" style={{ fontSize: "12px" }} onClick={() => setShowBusiness(false)}></button>
+                  </div>
+
+                  <Row>
+                    <Col md={6} className="border-end pe-4 text-start">
+                      <h6 className="fw-bold mb-4" style={{ fontSize: "16px" }}>
+                        Le mie app
+                      </h6>
+
+                      <div className="d-flex align-items-center mb-3">
+                        <Compass size={22} className="text-primary me-3" />
+                        <strong style={{ fontSize: "14px" }}>Vendi</strong>
+                      </div>
+
+                      <div className="d-flex align-items-center mb-4">
+                        <PeopleFill size={22} className="text-primary me-3" />
+                        <strong style={{ fontSize: "14px" }}>Gruppi</strong>
+                      </div>
+
+                      <div className="text-muted fw-bold mt-4 mb-4" style={{ fontSize: "13px" }}>
+                        Talent
+                      </div>
+
+                      <div className="d-flex align-items-center mb-3">
+                        <BarChartFill size={22} className="text-primary me-3" />
+                        <span style={{ fontSize: "14px" }}>Talent Insights</span>
+                      </div>
+
+                      <div className="d-flex align-items-center mb-4">
+                        <CardChecklist size={22} className="text-primary me-3 mt-3" />
+                        <span className="mt-3" style={{ fontSize: "14px" }}>
+                          Pubblica un’offerta di lavoro
+                        </span>
+                      </div>
+
+                      <div className="text-muted fw-bold mt-4 mb-3" style={{ fontSize: "13px" }}>
+                        Vendite
+                      </div>
+
+                      <div className="d-flex align-items-center mb-4">
+                        <Compass size={22} className="text-primary me-3" />
+                        <span style={{ fontSize: "14px" }}>Marketplace dei servizi</span>
+                      </div>
+
+                      <div className="text-muted fw-bold mt-4 mb-3" style={{ fontSize: "13px" }}>
+                        Marketing
+                      </div>
+
+                      <div className="d-flex align-items-center mb-4">
+                        <Bullseye size={22} className="text-primary me-3" />
+                        <span style={{ fontSize: "14px" }}>Pubblicizza</span>
+                      </div>
+
+                      <div className="text-muted fw-bold mt-4 mb-3" style={{ fontSize: "13px" }}>
+                        Learning
+                      </div>
+
+                      <div className="d-flex align-items-center">
+                        <PlayBtn size={22} className="text-primary me-3" />
+                        <span style={{ fontSize: "14px" }}>Learning</span>
+                      </div>
+                    </Col>
+                    <Col md={6} className="ps-4 text-start">
+                      <h6 className="fw-bold mb-4" style={{ fontSize: "16px" }}>
+                        Scopri altro per il business
+                      </h6>
+
+                      <div className="mb-3">
+                        <strong>Assumi su LinkedIn</strong>
+                        <div className="text-muted">Trova, attrai e assumi</div>
+                      </div>
+
+                      <div className="mb-3">
+                        <strong>Vendi con LinkedIn</strong>
+                        <div className="text-muted">Sblocca nuove opportunità</div>
+                      </div>
+                      <div className="mb-3">
+                        <strong>Offerta di lavoro gratuita</strong>
+                        <div className="text-muted">Candidati qualificati subito</div>
+                      </div>
+                      <div className="mb-3">
+                        <strong>Fai pubblicità su LinkedIn</strong>
+                        <div className="text-muted">Acquisisci clienti</div>
+                      </div>
+                      <div className="mb-3">
+                        <strong>Inizia con Premium</strong>
+                        <div className="text-muted">Amplia la tua rete</div>
+                      </div>
+
+                      <div className="mb-3">
+                        <strong>Impara con LinkedIn</strong>
+                        <div className="text-muted">Corsi per aziende</div>
+                      </div>
+                      <div className="mb-3">
+                        <strong>Centro per amministratori</strong>
+                        <div className="text-muted">Gestisci account</div>
+                      </div>
+                      <hr />
+                      <div className="fw-bold d-flex align-items-center">
+                        Crea una pagina aziendale
+                        <PlusLg className="ms-2" />
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              )}
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 };
-
 export default MyNavbar;
