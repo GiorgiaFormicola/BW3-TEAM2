@@ -1,9 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "./App.css";
+import ProfileMainSection from "./components/ProfileMainSection";
 
 function App() {
-  return <h1>Hola!</h1>;
+  return <ProfileMainSection></ProfileMainSection>;
 }
 
 export default App;
