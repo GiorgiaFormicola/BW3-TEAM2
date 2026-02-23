@@ -1,9 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "./App.css";
+import MyNavbar from "./components/MyNavbar";
 
 function App() {
-  return <h1>Hola!</h1>;
+  return <MyNavbar />;
 }
 
 export default App;
