@@ -13,3 +13,19 @@ p {
 body {
   background-color: #f4f2ee;
 }
+.nav-icon {
+  color: #555555;
+  transition:
+    color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.nav-icon:hover {
+  color: #000000;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.nav-link:hover small {
+  color: #000000;
+}
