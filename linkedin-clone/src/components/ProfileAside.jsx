@@ -1,126 +1,53 @@
-import { Card, Button, Image, ListGroup } from "react-bootstrap";
-import { Pencil, PersonPlusFill, Globe } from "react-bootstrap-icons";
-
-const MOCK_USERS = [
-  {
-    _id: "1",
-    name: "Bruce",
-    surname: "Wayne",
-    title: "Chairman at Wayne Enterprises",
-    image: "https://picsum.photos/50/50",
-  },
-  {
-    _id: "2",
-    name: "Bruce",
-    surname: "Wayne",
-    title: "Chairman at Wayne Enterprises",
-    image: "https://picsum.photos/50/50",
-  },
-  {
-    _id: "3",
-    name: "Bruce",
-    surname: "Wayne",
-    title: "Chairman at Wayne Enterprises",
-    image: "https://picsum.photos/50/50",
-  },
-  {
-    _id: "4",
-    name: "Bruce",
-    surname: "Wayne",
-    title: "Chairman at Wayne Enterprises",
-    image: "https://picsum.photos/50/50",
-  },
-  {
-    _id: "5",
-    name: "Bruce",
-    surname: "Wayne",
-    title: "Chairman at Wayne Enterprises",
-    image: "https://picsum.photos/50/50",
-  },
-];
+import { Card, Button, Image } from "react-bootstrap";
+import { Pencil, PersonPlusFill } from "react-bootstrap-icons";
+import "../assets/ProfileAside.css";
 
 const ProfileAside = () => {
+  const suggestedUsers = [
+    { id: 1, name: "Marco Verdi", title: "UX Designer at Google", img: "https://placedog.net/50/50" },
+    { id: 2, name: "Sara Bianchi", title: "Full Stack Developer", img: "https://placedog.net/50/50" },
+    { id: 3, name: "Marco Verdi", title: "UX Designer at Google", img: "https://placedog.net/50/50" },
+    { id: 4, name: "Sara Bianchi", title: "Full Stack Developer", img: "https://placedog.net/50/50" },
+  ];
+
   return (
-    <aside className="profile-aside">
-      {/* SEZIONE: LINGUE E PROFILO PUBBLICO */}
-      <Card className="mb-2 shadow-sm border-1">
-        <ListGroup variant="flush">
-          <ListGroup.Item className="py-3">
-            <div className="d-flex justify-content-between align-items-center">
-              <div>
-                <h6 className="mb-0 fw-bold" style={{ fontSize: "0.9rem" }}>
-                  Lingua del profilo
-                </h6>
-                <p className="text-muted mb-0 small">Italiano</p>
-              </div>
-              <Pencil size={14} className="text-muted cursor-pointer" />
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item className="py-3">
-            <div className="d-flex justify-content-between align-items-center">
-              <div>
-                <h6 className="mb-0 fw-bold" style={{ fontSize: "0.9rem" }}>
-                  Profilo pubblico e URL
-                </h6>
-                <p className="text-muted mb-0 small">www.linkedin.com/in/tuo-nome</p>
-              </div>
-              <Pencil size={14} className="text-muted cursor-pointer" />
-            </div>
-          </ListGroup.Item>
-        </ListGroup>
-      </Card>
-
-      {/* SEZIONE: PEOPLE ALSO VIEWED */}
-      <Card className="mb-2 shadow-sm border-1 p-3">
-        <h6 className="fw-bold mb-3" style={{ fontSize: "1rem" }}>
-          Altri profili consultati
-        </h6>
-        {MOCK_USERS.map((user) => (
-          <div key={user._id} className="d-flex align-items-start mb-3">
-            <Image src={user.image} roundedCircle className="me-2" style={{ width: "48px", height: "48px", objectFit: "cover" }} />
-            <div className="border-bottom pb-2 w-100">
-              <h6 className="mb-0 small fw-bold">
-                {user.name} {user.surname}
-              </h6>
-              <p className="text-muted mb-2 lh-sm" style={{ fontSize: "0.75rem" }}>
-                {user.title}
-              </p>
-              <Button variant="outline-secondary" size="sm" className="rounded-pill fw-bold px-3 py-0" style={{ fontSize: "0.85rem" }}>
-                Messaggio
-              </Button>
-            </div>
+    <div className="profile-aside">
+      <Card className="aside-card shadow-sm p-3 mb-2">
+        <div className="d-flex justify-content-between align-items-start mb-3 border-bottom pb-2">
+          <div>
+            <h6 className="aside-subtitle mb-0">Lingua del profilo</h6>
+            <span className="aside-text-muted">Italiano</span>
           </div>
-        ))}
+          <Pencil size={14} className="text-muted" />
+        </div>
+        <div className="d-flex justify-content-between align-items-start">
+          <div>
+            <h6 className="aside-subtitle mb-0">Profilo pubblico e URL</h6>
+            <span className="aside-text-muted text-truncate d-block" style={{ maxWidth: "150px" }}></span>
+          </div>
+          <Pencil size={14} className="text-muted" />
+        </div>
       </Card>
 
-      {/* SEZIONE: PEOPLE YOU MAY KNOW */}
-      <Card className="shadow-sm border-1 p-3">
-        <div className="mb-1">
-          <h6 className="fw-bold mb-0" style={{ fontSize: "1rem" }}>
-            Persone che potresti conoscere
-          </h6>
-          <p className="text-muted small">Dal tuo settore</p>
-        </div>
+      <Card className="aside-card shadow-sm p-3">
+        <h6 className="aside-title mb-1">Persone che potresti conoscere</h6>
+        <p className="aside-text-muted mb-3">Dal tuo settore</p>
 
-        {MOCK_USERS.slice(0, 5).map((user) => (
-          <div key={`know-${user._id}`} className="d-flex align-items-start mt-3">
-            <Image src={user.image} roundedCircle className="me-2" style={{ width: "48px", height: "48px", objectFit: "cover" }} />
+        {suggestedUsers.map((user) => (
+          <div key={user.id} className="d-flex align-items-start mt-3 user-item pb-3">
+            <Image src={user.img} className="profile-img-aside me-2" />
             <div className="w-100">
-              <h6 className="mb-0 small fw-bold">
-                {user.name} {user.surname}
-              </h6>
-              <p className="text-muted mb-2 lh-sm" style={{ fontSize: "0.75rem" }}>
-                {user.title}
-              </p>
-              <Button variant="outline-secondary" size="sm" className="rounded-pill fw-bold px-3 d-flex align-items-center gap-1">
-                <PersonPlusFill size={14} />
+              <h6 className="aside-subtitle mb-0">{user.name}</h6>
+              <p className="aside-text-muted mb-2 lh-sm">{user.title}</p>
+              <Button variant="outline-secondary" size="sm" className="btn-aside-connect">
+                <PersonPlusFill size={16} className="me-1" />
                 Collegati
               </Button>
             </div>
           </div>
         ))}
       </Card>
-    </aside>
+    </div>
   );
 };
 
