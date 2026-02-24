@@ -4,10 +4,12 @@ import "./App.css";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import ProfilePage from "./components/ProfilePage";
+import MyNavbar from "./components/MyNavbar";
 
 function App() {
   return (
     <Provider store={store}>
+      <MyNavbar />
       <ProfilePage></ProfilePage>
     </Provider>
   );
