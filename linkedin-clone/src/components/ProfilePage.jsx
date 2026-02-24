@@ -1,8 +1,17 @@
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileMainSection from "./ProfileMainSection";
 import ProfileAside from "./ProfileAside";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getMyProfileInfo } from "../redux/actions";
 
 const ProfilePage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMyProfileInfo());
+  }, []);
+
   return (
     <Container fluid="md">
       <Row className="justify-content-center">
