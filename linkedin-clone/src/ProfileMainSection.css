@@ -1,136 +1,138 @@
-.fs-7 {
-  font-size: 0.9em;
-  margin-bottom: 0;
-}
-
-#profile-name:hover {
-  background-color: #00000014;
-  cursor: pointer;
-}
-
-.btn-close {
-  border-radius: 50%;
-  padding: 0.8em !important;
-  opacity: 100% !important;
-}
-.btn-close:hover {
-  background-color: #8c8c8c1a;
-}
-
-.verified-icon {
-  height: 1.2em;
-}
-
-.modal-body a {
-  text-decoration: none;
-}
-.modal-body a:hover {
-  text-decoration: underline;
-}
-
-.blu-linkedin-text {
-  color: rgb(10, 102, 194);
-}
-
-.blu-linkedin-bg {
-  background-color: rgb(10, 102, 194);
-}
-
-#add-verification-button {
-  border: 1px, dashed;
-  padding-block: 0.1em;
-  padding-inline: 0.9em;
-  background-color: transparent;
-}
-
-#add-verification-button:hover {
-  color: #004182;
-  border: 1px, dashed;
-  padding-block: 0.1em;
-  padding-inline: 0.9em;
-  background-color: #378fe91a;
-  img {
-    filter: brightness(55%);
+#profile-card {
+  .fs-7 {
+    font-size: 0.9em;
+    margin-bottom: 0;
   }
-}
 
-#contact-info:hover,
-#show-details:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
+  #profile-name:hover {
+    background-color: #00000014;
+    cursor: pointer;
+  }
 
-.modal-body .bi-pencil {
-  border-radius: 50%;
-  padding-inline: 0.6em;
-  padding-block: 0.3em;
-  cursor: pointer;
-}
+  .btn-close {
+    border-radius: 50%;
+    padding: 0.8em !important;
+    opacity: 100% !important;
+  }
+  .btn-close:hover {
+    background-color: #8c8c8c1a;
+  }
 
-.modal-body .bi-pencil:hover {
-  background-color: #8c8c8c1a;
-}
+  .verified-icon {
+    height: 1.2em;
+  }
 
-button.blu-linkedin-bg:hover {
-  background-color: #004182;
-}
+  .modal-body a {
+    text-decoration: none;
+  }
+  .modal-body a:hover {
+    text-decoration: underline;
+  }
 
-.outlined-button {
-  border: 1px, solid, rgb(10, 102, 194);
-  color: rgb(10, 102, 194);
-  background-color: transparent;
-}
+  .blu-linkedin-text {
+    color: rgb(10, 102, 194);
+  }
 
-.outlined-button:hover {
-  color: #004182;
-  border: 1px, solid, #004182;
-  box-shadow: inset 0px 0px 0px 1px #004182;
-  background-color: #378fe91a;
-}
+  .blu-linkedin-bg {
+    background-color: rgb(10, 102, 194);
+  }
 
-.outlined-button-grey {
-  border: 1px, solid, rgb(42, 42, 43);
-  color: rgb(42, 42, 43);
-  background-color: transparent;
-}
+  #add-verification-button {
+    border: 1px, dashed;
+    padding-block: 0.1em;
+    padding-inline: 0.9em;
+    background-color: transparent;
+  }
 
-.outlined-button-grey:hover {
-  color: rgb(0, 0, 0);
-  border: 1px, solid, rgb(0, 0, 0);
-  box-shadow: inset 0px 0px 0px 1px rgb(0, 0, 0);
-  background-color: #0000000f;
-}
+  #add-verification-button:hover {
+    color: #004182;
+    border: 1px, dashed;
+    padding-block: 0.1em;
+    padding-inline: 0.9em;
+    background-color: #378fe91a;
+    img {
+      filter: brightness(55%);
+    }
+  }
 
-#available-to-work {
-  background-color: #dde7f1;
-  cursor: pointer;
-}
+  #contact-info:hover,
+  #show-details:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 
-.bi-plus-lg {
-  color: rgb(10, 102, 194);
-  border: 1px, solid, #004182;
-  background: white;
-  border-radius: 50%;
-  padding-inline: 0.4em;
-  padding-block: 0.2em;
-  cursor: pointer;
-}
+  .modal-body .bi-pencil {
+    border-radius: 50%;
+    padding-inline: 0.6em;
+    padding-block: 0.3em;
+    cursor: pointer;
+  }
 
-.animated.bi-pencil {
-  border-radius: 50%;
-  padding-inline: 0.6em;
-  padding-block: 0.4em;
-  cursor: pointer;
-}
+  .modal-body .bi-pencil:hover {
+    background-color: #8c8c8c1a;
+  }
 
-.animated.bi-pencil:hover {
-  background-color: #8c8c8c1a;
-}
+  button.blu-linkedin-bg:hover {
+    background-color: #004182;
+  }
 
-#user-picture {
-  top: -3.5em;
-}
+  .outlined-button {
+    border: 1px, solid, rgb(10, 102, 194);
+    color: rgb(10, 102, 194);
+    background-color: transparent;
+  }
 
-.bi-camera-fill:hover {
-  color: #004182;
+  .outlined-button:hover {
+    color: #004182;
+    border: 1px, solid, #004182;
+    box-shadow: inset 0px 0px 0px 1px #004182;
+    background-color: #378fe91a;
+  }
+
+  .outlined-button-grey {
+    border: 1px, solid, rgb(42, 42, 43);
+    color: rgb(42, 42, 43);
+    background-color: transparent;
+  }
+
+  .outlined-button-grey:hover {
+    color: rgb(0, 0, 0);
+    border: 1px, solid, rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 0px 1px rgb(0, 0, 0);
+    background-color: #0000000f;
+  }
+
+  #available-to-work {
+    background-color: #dde7f1;
+    cursor: pointer;
+  }
+
+  .bi-plus-lg {
+    color: rgb(10, 102, 194);
+    border: 1px, solid, #004182;
+    background: white;
+    border-radius: 50%;
+    padding-inline: 0.4em;
+    padding-block: 0.2em;
+    cursor: pointer;
+  }
+
+  .animated.bi-pencil {
+    border-radius: 50%;
+    padding-inline: 0.6em;
+    padding-block: 0.4em;
+    cursor: pointer;
+  }
+
+  .animated.bi-pencil:hover {
+    background-color: #8c8c8c1a;
+  }
+
+  #user-picture {
+    top: -3.5em;
+  }
+
+  .bi-camera-fill:hover {
+    color: #004182;
+  }
 }

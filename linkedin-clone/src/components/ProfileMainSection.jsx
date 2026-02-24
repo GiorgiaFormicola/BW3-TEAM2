@@ -20,7 +20,7 @@ const ProfileMainSection = () => {
               <Col>
                 <Card className="rounded-3" id="profile-card">
                   <Card.Img variant="top" src="https://placecats.com/300/70" />
-                  <i class="bi bi-camera-fill blu-linkedin-text position-absolute top-0 end-0 fs-6 me-4 mt-4 me-md-3 mt-md-3 me-lg-4 mt-lg-4 bg-white px-2 py-1 rounded-circle"></i>
+                  <i className="bi bi-camera-fill blu-linkedin-text position-absolute top-0 end-0 fs-6 me-4 mt-4 me-md-3 mt-md-3 me-lg-4 mt-lg-4 bg-white px-2 py-1 rounded-circle"></i>
                   <Card.Body className="px-4 position-relative">
                     <div className=" position-absolute" id="user-picture">
                       <div className="rounded-circle overflow-hidden">
