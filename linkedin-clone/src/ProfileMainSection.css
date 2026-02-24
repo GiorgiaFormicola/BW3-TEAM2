@@ -106,10 +106,6 @@ button.blu-linkedin-bg:hover {
   cursor: pointer;
 }
 
-#user-picture {
-  top: 60%;
-}
-
 .bi-plus-lg {
   color: rgb(10, 102, 194);
   border: 1px, solid, #004182;
@@ -129,4 +125,12 @@ button.blu-linkedin-bg:hover {
 
 .animated.bi-pencil:hover {
   background-color: #8c8c8c1a;
+}
+
+#user-picture {
+  top: -3.5em;
+}
+
+.bi-camera-fill:hover {
+  color: #004182;
 }

@@ -18,21 +18,20 @@ const ProfileMainSection = () => {
             <Row>
               {/* INIZIO COLONNA COMPONENTE DA MONTARE */}
               <Col>
-                <Card className="rounded-3 " id="profile-card">
-                  <div className="position-relative">
-                    <Card.Img variant="top" src="https://placecats.com/300/70" />
-                    <div className=" position-absolute mx-4 " id="user-picture">
-                      <div className="rounded-circle overflow-hidden  ">
-                        <img src="https://placecats.com/120/120" alt="" />
+                <Card className="rounded-3" id="profile-card">
+                  <Card.Img variant="top" src="https://placecats.com/300/70" />
+                  <i class="bi bi-camera-fill blu-linkedin-text position-absolute top-0 end-0 fs-6 me-4 mt-4 me-md-3 mt-md-3 me-lg-4 mt-lg-4 bg-white px-2 py-1 rounded-circle"></i>
+                  <Card.Body className="px-4 position-relative">
+                    <div className=" position-absolute" id="user-picture">
+                      <div className="rounded-circle overflow-hidden">
+                        <img src="https://placecats.com/130/130" alt="" style={{ height: "8em", width: "8em" }} />
                       </div>
                       <div className="position-absolute end-0 bottom-0">
                         <i className="bi bi-plus-lg position-relative fs-4"></i>
                       </div>
                     </div>
-                  </div>
-                  <Card.Body className="px-4">
                     <div className="text-end mb-4">
-                      <i className="bi bi-pencil fs-5 animated"></i>
+                      <i className="bi bi-pencil fs-4 animated"></i>
                     </div>
 
                     <div className="d-flex align-items-start justify-content-between">
