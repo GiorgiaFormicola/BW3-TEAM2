@@ -4,15 +4,13 @@ import MyNavbar from "./components/MyNavbar";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store/index";
 
+import MyFooter from "./components/MyFooter";
 function App() {
   return (
     <Provider store={store}>
       <MyNavbar />
       <ProfilePage></ProfilePage>
-      <BrowserRouter>
-        <MyNavbar />
-        <ProfilePage></ProfilePage>
-      </BrowserRouter>
+      <MyFooter></MyFooter>
     </Provider>
   );
 }
