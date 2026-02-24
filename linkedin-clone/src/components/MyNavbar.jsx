@@ -39,7 +39,7 @@ const MyNavbar = () => {
   }, []);
 
   return (
-    <Navbar bg="light" expand="lg" className="shadow-sm py-2">
+    <Navbar bg="light" expand="md" className="shadow-sm py-2">
       <Container fluid>
         <div className="d-flex align-items-center ms-5 ps-5">
           <Navbar.Brand href="#">
@@ -62,12 +62,12 @@ const MyNavbar = () => {
           <Nav className="align-items-center text-center">
             <Nav.Link href="#" className="mx-4 d-flex flex-column align-items-center">
               <House size={20} className="nav-icon" />
-              <small>Home</small>
+              <small className="d-none d-lg-inline">Home</small>
             </Nav.Link>
 
             <Nav.Link href="#" className="mx-4 d-flex flex-column align-items-center">
               <People size={20} className="nav-icon" />
-              <small>Rete</small>
+              <small className="d-none d-lg-inline">Rete</small>
             </Nav.Link>
 
             <Nav.Link href="#" className="mx-4 position-relative d-flex flex-column align-items-center">
@@ -75,7 +75,7 @@ const MyNavbar = () => {
               <Badge bg="danger" pill className="position-absolute top-10 start-100 translate-middle">
                 2
               </Badge>
-              <small>Lavoro</small>
+              <small className="d-none d-lg-inline">Lavoro</small>
             </Nav.Link>
 
             <Nav.Link href="#" className="mx-4 position-relative d-flex flex-column align-items-center">
@@ -83,7 +83,7 @@ const MyNavbar = () => {
               <Badge bg="danger" pill className="position-absolute top-10 start-100 translate-middle">
                 38
               </Badge>
-              <small>Messaggistica</small>
+              <small className="d-none d-lg-inline">Messaggistica</small>
             </Nav.Link>
 
             <Nav.Link href="#" className="mx-4 position-relative d-flex flex-column align-items-center">
@@ -91,7 +91,7 @@ const MyNavbar = () => {
               <Badge bg="danger" pill className="position-absolute top-10 start-100 translate-middle">
                 13
               </Badge>
-              <small>Notifiche</small>
+              <small className="d-none d-lg-inline">Notifiche</small>
             </Nav.Link>
 
             <div
@@ -106,7 +106,9 @@ const MyNavbar = () => {
                 className="rounded-circle"
                 style={{ width: "36px", height: "36px", objectFit: "cover" }}
               />
-              <small style={{ fontSize: "12px", marginTop: "4px" }}>Tu ▾</small>
+              <small className="d-none d-lg-inline" style={{ fontSize: "12px", marginTop: "4px" }}>
+                Tu ▾
+              </small>
 
               {showMenu && (
                 <div
@@ -162,7 +164,9 @@ const MyNavbar = () => {
               onClick={() => setShowBusiness(!showBusiness)}
             >
               <Grid3x3Gap size={24} />
-              <small style={{ fontSize: "12px" }}>Per le aziende ▾</small>
+              <small className="d-none d-lg-inline" style={{ fontSize: "12px" }}>
+                Per le aziende ▾
+              </small>
 
               {showBusiness && (
                 <div

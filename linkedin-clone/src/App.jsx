@@ -4,7 +4,7 @@ import "./App.css";
 import MyNavbar from "./components/MyNavbar";
 
 function App() {
-  return <MyNavbar />;
+  return;
 }
 
 export default App;
