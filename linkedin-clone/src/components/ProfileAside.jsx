@@ -1,14 +1,8 @@
 import { Card, Button, Image } from "react-bootstrap";
 import { Pencil, PersonPlusFill } from "react-bootstrap-icons";
-import "../assets/ProfileAside.css";
 
-const ProfileAside = () => {
-  const suggestedUsers = [
-    { id: 1, name: "Marco Verdi", title: "UX Designer at Google", img: "https://placedog.net/50/50" },
-    { id: 2, name: "Sara Bianchi", title: "Full Stack Developer", img: "https://placedog.net/50/50" },
-    { id: 3, name: "Marco Verdi", title: "UX Designer at Google", img: "https://placedog.net/50/50" },
-    { id: 4, name: "Sara Bianchi", title: "Full Stack Developer", img: "https://placedog.net/50/50" },
-  ];
+const ProfileAside = ({ profile }) => {
+  const suggestedUsers = profile.suggestedUsers ?? [];
 
   return (
     <div className="profile-aside">
@@ -16,14 +10,7 @@ const ProfileAside = () => {
         <div className="d-flex justify-content-between align-items-start mb-3 border-bottom pb-2">
           <div>
             <h6 className="aside-subtitle mb-0">Lingua del profilo</h6>
-            <span className="aside-text-muted">Italiano</span>
-          </div>
-          <Pencil size={14} className="text-muted" />
-        </div>
-        <div className="d-flex justify-content-between align-items-start">
-          <div>
-            <h6 className="aside-subtitle mb-0">Profilo pubblico e URL</h6>
-            <span className="aside-text-muted text-truncate d-block" style={{ maxWidth: "150px" }}></span>
+            <span className="aside-text-muted">{profile.language ?? "Italiano"}</span>
           </div>
           <Pencil size={14} className="text-muted" />
         </div>

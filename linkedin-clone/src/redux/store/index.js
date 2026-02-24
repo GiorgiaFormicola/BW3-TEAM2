@@ -1,3 +1,4 @@
+// src/redux/store/index.js
 import { configureStore } from "@reduxjs/toolkit";
 import profileReducer from "../reducers/profileReducer";
 
