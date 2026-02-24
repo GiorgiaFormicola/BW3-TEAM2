@@ -1,0 +1,50 @@
+.aside-card {
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 8px !important;
+  background-color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.aside-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.aside-subtitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.aside-text-muted {
+  font-size: 0.75rem;
+  color: #666666;
+}
+
+.btn-aside-connect {
+  border: 1px solid #666666 !important;
+  color: #666666 !important;
+  font-weight: 600 !important;
+  border-radius: 20px !important;
+  transition: all 0.2s;
+}
+
+.btn-aside-connect:hover {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  border-color: #333333 !important;
+}
+
+.user-item {
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.user-item:last-child {
+  border-bottom: none;
+}
+
+.profile-img-aside {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+}
