@@ -3,7 +3,6 @@ import { SlPencil } from "react-icons/sl";
 function Activity() {
   return (
     <Container fluid className="bg-light rounded-3 border p-0 my-3 lh-sm">
-      {/* Header */}
       <Row className="px-3 pt-3 align-items-start">
         <Col>
           <p className="fs-5 fw-bold mb-1">Attività</p>
@@ -16,7 +15,6 @@ function Activity() {
         </Col>
       </Row>
 
-      {/* Corpo */}
       <Row className="px-3 pb-3 pt-2">
         <Col>
           <p className="fs-6 fw-bold mb-1">Non hai ancora pubblicato nulla</p>

@@ -5,7 +5,6 @@ import { FiPlus } from "react-icons/fi";
 function ProfileSections() {
   return (
     <>
-      {/* ESPERIENZA */}
       <Container fluid className="bg-light rounded-3 border p-0 my-3">
         <Row className="px-3 pt-3 align-items-start">
           <Col>
@@ -30,7 +29,6 @@ function ProfileSections() {
         </Row>
       </Container>
 
-      {/* FORMAZIONE */}
       <Container fluid className="bg-light rounded-3 border p-0 my-3">
         <Row className="px-3 pt-3 align-items-start">
           <Col>
@@ -49,7 +47,6 @@ function ProfileSections() {
         </Row>
       </Container>
 
-      {/* COMPETENZE */}
       <Container fluid className="bg-light rounded-3 border p-0 my-3">
         <Row className="px-3 pt-3 align-items-start">
           <Col>
