@@ -1,3 +1,18 @@
+p {
+  margin: 0px !important;
+}
+
+.fs-9 {
+  font-size: 0.8rem;
+}
+
+.fs-7 {
+  font-size: 0.95rem;
+}
+
+body {
+  background-color: #f4f2ee;
+}
 .nav-icon {
   color: #555555;
   transition:

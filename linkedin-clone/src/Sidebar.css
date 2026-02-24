@@ -1,0 +1,146 @@
+.sidebar-container {
+  width: 100%; /* Reso 100% per adattarsi al layout flexbox di App.css */
+  font-family: Arial, sans-serif;
+}
+
+.sidebar-card {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.sidebar-padding {
+  padding: 12px;
+}
+
+.sidebar-cover {
+  height: 60px;
+  background-color: #a0b4b7;
+}
+
+.sidebar-profile-section {
+  text-align: center;
+  position: relative;
+  margin-top: -35px;
+}
+
+.sidebar-profile-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: white;
+}
+
+/* Modificata con prefisso */
+.sidebar-add-icon {
+  position: absolute;
+  bottom: 0;
+  right: calc(50% - 35px); /* Mantengo il trucchetto per centrarla sul bordo */
+  background-color: #0a66c2;
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  padding: 4px;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.sidebar-user-info {
+  text-align: center;
+  padding: 12px;
+}
+
+.sidebar-user-info h2 {
+  font-size: 16px;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+  color: #000000e6;
+}
+
+.sidebar-user-info p {
+  font-size: 12px;
+  color: #00000099;
+  margin: 0 0 12px 0;
+}
+
+/* Modificata con prefisso */
+.sidebar-experience-btn {
+  width: 100%;
+  padding: 8px;
+  background-color: transparent;
+  border: 1px dashed #00000099;
+  border-radius: 4px;
+  color: #00000099;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sidebar-experience-btn:hover {
+  background-color: #f3f2ef;
+}
+
+.sidebar-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Modificate con prefisso */
+.sidebar-stat-title {
+  display: block;
+  font-size: 12px;
+  color: #00000099;
+  font-weight: 600;
+}
+
+.sidebar-stat-subtitle {
+  display: block;
+  font-size: 12px;
+  color: #000000e6;
+  font-weight: bold;
+}
+
+.sidebar-stat-icon {
+  font-size: 16px;
+}
+
+.sidebar-premium-text {
+  font-size: 12px;
+  color: #00000099;
+  margin: 0 0 4px 0;
+}
+
+.sidebar-premium-link {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+}
+
+.sidebar-premium-link:hover {
+  color: #0a66c2;
+}
+
+.sidebar-gold-icon {
+  font-size: 12px;
+}
+
+/* Modificata con prefisso */
+.sidebar-menu-item {
+  font-size: 12px;
+  color: #000000e6;
+  font-weight: bold;
+  padding: 8px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-menu-item:hover {
+  background-color: #f3f2ef;
+}
