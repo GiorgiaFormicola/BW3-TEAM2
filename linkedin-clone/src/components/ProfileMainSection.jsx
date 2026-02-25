@@ -3,7 +3,6 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import "../assets/ProfileMainSection.css";
 import { useSelector } from "react-redux";
-import { current } from "@reduxjs/toolkit";
 
 const ProfileMainSection = () => {
   const [show, setShow] = useState(false);
