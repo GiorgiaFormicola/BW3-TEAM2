@@ -6,13 +6,14 @@ import { Provider } from "react-redux";
 import ProfilePage from "./components/ProfilePage";
 import MyFooter from "./components/MyFooter";
 import MyNavbar from "./components/MyNavbar";
-
+import JobsSection from "./components/JobsSection";
 function App() {
   return (
     <Provider store={store}>
       <MyNavbar />
       <ProfilePage></ProfilePage>
       <MyFooter></MyFooter>
+      <JobsSection></JobsSection>
     </Provider>
   );
 }

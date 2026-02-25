@@ -16,12 +16,13 @@ import {
   PlusLg,
 } from "react-bootstrap-icons";
 import { useState, useRef, useEffect } from "react";
-
+import JobsSection from "./JobsSection";
 const MyNavbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   const [showBusiness, setShowBusiness] = useState(false);
   const businessRef = useRef(null);
+  const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -51,7 +52,15 @@ const MyNavbar = () => {
               <InputGroup.Text className="bg-white border-end-0 rounded-start-pill ps-3">
                 <Search size={16} className="text-muted" />
               </InputGroup.Text>
-              <FormControl type="search" placeholder="Cerca" className="border-start-0 rounded-end-pill px-2" />
+              <FormControl
+                type="search"
+                placeholder="Cerca"
+                className="border-start-0 rounded-end-pill px-2"
+                value={searchValue}
+                onChange={(e) => {
+                  setSearchValue(e.target.value);
+                }}
+              />
             </InputGroup>
           </Form>
         </div>
