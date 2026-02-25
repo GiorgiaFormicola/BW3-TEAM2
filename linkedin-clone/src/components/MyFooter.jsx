@@ -7,7 +7,7 @@ import { IoShieldHalf } from "react-icons/io5";
 import { Dropdown } from "react-bootstrap";
 function MyFooter() {
   return (
-    <Container className="mt-5">
+    <Container fluid className="mt-5 px-0">
       <Row>
         <Col className="fs-9 mb-3" xs={4}>
           Informazioni

@@ -16,12 +16,25 @@ import {
   PlusLg,
 } from "react-bootstrap-icons";
 import { useState, useRef, useEffect } from "react";
+// PER OTTENERE PROFILO UTENTE
+import { useDispatch } from "react-redux";
+import { getMyProfileInfo } from "../redux/actions";
+// PER OTTENERE PROFILO UTENTE
 
 const MyNavbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   const [showBusiness, setShowBusiness] = useState(false);
   const businessRef = useRef(null);
+
+  // PER OTTENERE PROFILO UTENTE
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMyProfileInfo());
+  }, []);
+  // PER OTTENERE PROFILO UTENTE
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
