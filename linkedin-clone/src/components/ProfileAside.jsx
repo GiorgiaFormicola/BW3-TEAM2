@@ -1,6 +1,7 @@
 import { Card, Button, Image } from "react-bootstrap";
 import { Pencil, PersonPlusFill, Briefcase, BookmarkFill, BellFill } from "react-bootstrap-icons";
 import "../assets/ProfileAside.css";
+import imgAssets from "../assets/img/Ads.png";
 
 const ProfileAside = ({ profile }) => {
   const alsoViewed = [
@@ -39,26 +40,28 @@ const ProfileAside = ({ profile }) => {
         </div>
       </Card>
 
-      <Card className="aside-card  mb-2 overflow-hidden border-0">
-        {/* Sostituisci il src con la tua variabile degli assets */}
-        <Image src="../assets/img/Ads.png" alt="Promozione" fluid />
+      {/* 1. ADS */}
+
+      <Card className="aside-card mb-2 overflow-hidden border-0">
+        <Image src={imgAssets} alt="Promozione" fluid />
       </Card>
 
-      {/* 2. VIEWERS ALSO VIEWED */}
-      <Card className="aside-card  p-3 mb-2">
-        <h6 className="fw-bold mb-3 fs-7">Altri profili consultati</h6>
+      {/* 2. WHO VIEWS MY PROFILE */}
+
+      <Card className="aside-card p-3 mb-2">
+        <h6 className="aside-title mb-3">Scopri chi ha visitato il tuo profilo</h6>
         {alsoViewed.map((user) => (
-          <div key={user.id} className="d-flex align-items-start mb-3 border-bottom pb-2">
-            {/* CONTENITORE CERCHIO */}
+          <div key={user.id} className="d-flex align-items-start user-item py-3">
             <div className="profile-img-container me-2 flex-shrink-0">
               <img src={user.img} className="blurred-inner-img" alt="user" />
             </div>
-
             <div className="w-100">
-              <h6 className="fw-bold mb-0 fs-7">{user.name}</h6>
-              <p className="text-muted fs-7 mb-2 lh-1">{user.title}</p>
-              <Button variant="outline-secondary" size="sm" className="rounded-pill fw-bold fs-7 px-3">
-                Messaggio
+              <h6 className="aside-subtitle mb-0">Utente LinkedIn</h6>
+              <p className="aside-text-muted mb-2 lh-sm text-truncate" style={{ maxWidth: "180px" }}>
+                {user.title}
+              </p>
+              <Button variant="outline-secondary" size="sm" className="btn-aside-connect">
+                Vedi
               </Button>
             </div>
           </div>
@@ -66,12 +69,12 @@ const ProfileAside = ({ profile }) => {
       </Card>
 
       {/* 3. PEOPLE YOU MAY KNOW */}
-      <Card className="aside-card  p-3 mb-2">
+      <Card className="aside-card p-3 mb-2">
         <h6 className="aside-title mb-1">Persone che potresti conoscere</h6>
-        <p className="aside-text-muted mb-3">Dal tuo settore</p>
+        <p className="aside-text-muted mb-0">Dal tuo settore</p>
         {suggestedUsers.map((user) => (
-          <div key={user.id} className="d-flex align-items-start mt-3 user-item pb-3">
-            <Image src={user.img} className="profile-img-aside me-2" />
+          <div key={user.id} className="d-flex align-items-start user-item py-3">
+            <Image src={user.img} className="profile-img-aside me-2 flex-shrink-0" />
             <div className="w-100">
               <h6 className="aside-subtitle mb-0">{user.name}</h6>
               <p className="aside-text-muted mb-2 lh-sm">{user.title}</p>
