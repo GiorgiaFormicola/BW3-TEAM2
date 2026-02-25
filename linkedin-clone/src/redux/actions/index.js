@@ -1,15 +1,31 @@
-// src/redux/actions.js
-import { setSearchResults } from "./reducers/profileReducer";
+export const GET_PROFILE = "GET_PROFILE";
 
-export const fetchSearchResults = (query, token) => async (dispatch) => {
-  if (!query) return dispatch(setSearchResults([]));
-  try {
-    const res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${query}`, {
-      headers: { Authorization: "Bearer " + token },
-    });
-    const data = await res.json();
-    dispatch(setSearchResults(data));
-  } catch (err) {
-    console.error(err);
-  }
+export const getMyProfileInfo = () => {
+  return (dispatch, getState) => {
+    const URL = getState().profile.URL;
+    const token = getState().profile.token;
+
+    fetch(URL, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Error in getting the profile info");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch({
+          type: GET_PROFILE,
+          payload: data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 };

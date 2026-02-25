@@ -1,33 +1,32 @@
 import { Container, Row, Col } from "react-bootstrap";
 import ProfileMainSection from "./ProfileMainSection";
+import ProfileAside from "./ProfileAside";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getMyProfileInfo } from "../redux/actions";
+import ProfileSections from "./ProfileSection";
 import Activity from "./Activity";
 import Analisi from "./Analisi";
-import ProfileSections from "./ProfileSection";
-import ProfileAside from "./ProfileAside";
-import { useSelector } from "react-redux";
-
 const ProfilePage = () => {
-  // prendiamo il profilo selezionato, altrimenti il tuo
-  const selectedProfile = useSelector((state) => state.profile.selectedProfile);
-  const myProfile = useSelector((state) => state.profile.object);
-  const profile = selectedProfile ?? myProfile;
+  const dispatch = useDispatch();
 
-  if (!profile) return <p>Caricamento profilo...</p>;
+  useEffect(() => {
+    dispatch(getMyProfileInfo());
+  }, []);
 
   return (
     <Container fluid="md">
       <Row className="justify-content-center">
         <Col xs={12} md={7} lg={8}>
           <Row>
-            <ProfileMainSection profile={profile} />
-            <Activity profile={profile} />
-            <Analisi profile={profile} />
-            <ProfileSections profile={profile} />
+            <ProfileMainSection></ProfileMainSection>
+            <Activity></Activity>
+            <Analisi></Analisi>
+            <ProfileSections></ProfileSections>
           </Row>
         </Col>
-
         <Col xs={12} md={5} lg={4} className="mt-3 mt-md-0 col-xxl-3">
-          <ProfileAside profile={profile} />
+          <ProfileAside></ProfileAside>
         </Col>
       </Row>
     </Container>
