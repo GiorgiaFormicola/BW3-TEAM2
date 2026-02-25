@@ -1,3 +1,30 @@
+.blurred-profile-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: blur(4px);
+  opacity: 0.8;
+}
+.profile-img-container {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e0e0e0;
+  background-color: #f3f3f3;
+}
+
+.blurred-inner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(4px);
+  transform: scale(1.2);
+}
 .aside-card {
   border: 1px solid #e0e0e0 !important;
   border-radius: 8px !important;
@@ -47,4 +74,34 @@
   height: 48px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+/* "Job Search" */
+.job-search-icon {
+  color: #666666;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.job-search-item {
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.job-search-item:hover {
+  background-color: #f3f3f3;
+  cursor: pointer;
+}
+
+/* "Who viewed also viewed" */
+.viewed-user-item {
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 12px;
+}
+
+.viewed-user-item:last-child {
+  border-bottom: none;
 }
