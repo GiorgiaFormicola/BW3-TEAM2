@@ -24,7 +24,7 @@ function CreatePost() {
     })
       .then((res) => {
         if (res.ok) {
-          console.log(post);
+          console.log("Post added");
           dispatch(getPostsList());
         } else {
           throw new Error("Error in adding the post");

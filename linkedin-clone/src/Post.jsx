@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./Post.css";
-import { Dropdown, Modal } from "react-bootstrap";
+import { useState } from "react";
+import { Modal, Button, Toast, Form } from "react-bootstrap";
 import { getPostsList } from "./redux/actions";
 
 function Post(props) {
@@ -11,8 +12,10 @@ function Post(props) {
   const URL = useSelector((currentState) => currentState.posts.URL);
   const dispatch = useDispatch();
 
-  // const [show, setShow] = useState(false);
-  // const [formValue, setFormValue] = useState("");
+  const [showToast, setShowToast] = useState(false);
+  const toggleShowToast = () => setShowToast(!showToast);
+  const [showModal, setShowModal] = useState(false);
+  const [formValue, setFormValue] = useState(props.post.text);
 
   const deletePost = () => {
     fetch(URL + props.post._id, {
@@ -34,16 +37,37 @@ function Post(props) {
       });
   };
 
-  // const handleClose = () => {
-  //   setFormValue("");
-  //   setShow(false);
-  // };
-  // const handleShow = () => setShow(true);
+  const modifyPost = (post) => {
+    fetch(URL + props.post._id, {
+      method: "PUT",
+      body: JSON.stringify(post),
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("Post modified");
+          dispatch(getPostsList());
+        } else {
+          throw new Error("Error in modifying the post");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+  const handleShow = () => setShowModal(true);
 
   return (
     <>
       <div className="post-container" id="post-main-container">
-        <div className="post-header">
+        <div className="post-header align-items-center position-relative">
           <img src={props.post.user.image} alt="Profilo Azienda" className="post-profile-pic object-fit-cover" />
           <div className="post-header-info">
             <h3>
@@ -79,29 +103,41 @@ function Post(props) {
             </p>
           </div>
           {props.post.user._id === profileObject._id && (
-            <div className="post-header-options align-self-start">
-              <span id="post-options-menu-btn">
-                <Dropdown>
-                  <Dropdown.Toggle className="border-0 bg-transparent text-secondary fs-5 fw-bolder">...</Dropdown.Toggle>
-
-                  <Dropdown.Menu>
-                    <div className="text-black text-opacity-75">
-                      <p className="d-flex gap-2 align-items-center py-2 fs-7 justify-content-center">
-                        <i className="bi bi-pencil fs-5"></i> Modifica post
-                      </p>
-                      <p
-                        className="d-flex gap-2 align-items-center py-2 fs-7 justify-content-center"
-                        onClick={() => {
-                          deletePost();
-                        }}
-                      >
-                        <i className="bi bi-trash-fill fs-5"></i>Elimina post
-                      </p>
-                    </div>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </span>
-            </div>
+            <>
+              <Button onClick={toggleShowToast} className="mb-2 bg-transparent border-0 text-dark fw-bolder fs-3 me-4 p-0 position-absolute top-0 end-0">
+                ...
+              </Button>
+              <Toast
+                onClose={toggleShowToast}
+                show={showToast}
+                animation={false}
+                className="position-absolute top-50 mt-2 end-0 bg-white shadow-sm"
+                style={{ width: "20em" }}
+              >
+                <Toast.Body className="text-black text-opacity-75 fs-7 fw-semibold d-flex flex-column gap-3">
+                  <p
+                    className="d-flex gap-2 align-items-center px-2 justify-content-start"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      handleShow();
+                      toggleShowToast();
+                    }}
+                  >
+                    <i className="bi bi-pencil fs-5"></i> Modifica post
+                  </p>
+                  <p
+                    className="d-flex gap-2 align-items-center px-2 justify-content-start "
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      toggleShowToast();
+                      deletePost();
+                    }}
+                  >
+                    <i className="bi bi-trash-fill fs-5"></i>Elimina post
+                  </p>
+                </Toast.Body>
+              </Toast>
+            </>
           )}
         </div>
 
@@ -150,7 +186,7 @@ function Post(props) {
         </div>
       </div>
       {/* INIZIO MODALE */}
-      {/* <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={showModal} onHide={handleClose} animation={false}>
         <Modal.Header className="align-items-start p-4 border-bottom-0" closeButton>
           <Modal.Title>
             <div className="d-flex align-items-center gap-3">
@@ -181,36 +217,28 @@ function Post(props) {
           </Form>
           <div className="px-3">
             <i className="bi bi-emoji-smile"></i>
-            <div className=" text-secondary d-flex gap-4 mt-3">
-              <i className="bi bi-card-image"></i>
-              <i className="bi bi-calendar-week"></i>
-              <i className="bi bi-star-fill"></i>
-              <i className="bi bi-plus-lg"></i>
-            </div>
           </div>
         </Modal.Body>
-        <Modal.Footer className="gap-1 px-4">
-          <i className="bi bi-clock"></i>
-
+        <Modal.Footer className="px-4">
           {formValue === "" && (
             <Button className="border-0 rounded-pill py-1 px-3 bg-secondary bg-opacity-25 text-secondary fw-semibold" disabled>
-              Pubblica
+              Salva
             </Button>
           )}
 
           {formValue !== "" && (
             <Button
               onClick={() => {
-                addPost({ text: formValue });
+                modifyPost({ text: formValue });
                 handleClose();
               }}
               className="border-0 rounded-pill py-1 px-3 bg-primary text-light fw-semibold"
             >
-              Pubblica
+              Salva
             </Button>
           )}
         </Modal.Footer>
-      </Modal> */}
+      </Modal>
       {/* FINE MODALE */}
     </>
   );
