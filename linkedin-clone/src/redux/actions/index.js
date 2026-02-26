@@ -56,7 +56,7 @@ export const fetchJobs = (category) => {
       }
 
       const data = await res.json();
-
+      console.log(data);
       dispatch({
         type: SET_JOBS,
         payload: data.data,

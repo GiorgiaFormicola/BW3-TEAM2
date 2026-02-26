@@ -5,7 +5,7 @@ import Sidebar from "../Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPostsList } from "../redux/actions";
-
+import MyFooter from "./MyFooter";
 // const postsListURL = "https://striveschool-api.herokuapp.com/api/posts/";
 
 const HomePage = () => {
@@ -30,7 +30,9 @@ const HomePage = () => {
               .reverse()
               .map((post) => <Post key={post._id} post={post}></Post>)}
         </Col>
-        <Col md={8} lg={4} className="offset-md-4 offset-lg-0 col-xxl-3 bg-primary min-vh-100"></Col>
+        <Col md={8} lg={4} className="offset-md-4 offset-lg-0 col-xxl-3 min-vh-100">
+          <MyFooter />
+        </Col>
       </Row>
     </Container>
   );

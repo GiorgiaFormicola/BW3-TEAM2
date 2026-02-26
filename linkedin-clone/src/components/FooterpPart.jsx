@@ -2,12 +2,14 @@ import { FaQuestionCircle } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { IoShieldHalf } from "react-icons/io5";
 import { Container, Row, Col } from "react-bootstrap";
-
+import { MdSos } from "react-icons/md";
 import { Dropdown } from "react-bootstrap";
-function Part2() {
+import { useLocation } from "react-router-dom";
+function FooterPart() {
+  const location = useLocation();
   return (
     <>
-      <Container>
+      {location.pathname !== "/" && (
         <Row>
           <Col xs={8}>
             <Row>
@@ -39,7 +41,6 @@ function Part2() {
               <Dropdown.Toggle variant="white" className="border border-black rounded-0 py-1 px-5" id="dropdown-basic">
                 Italiano
               </Dropdown.Toggle>
-
               <Dropdown.Menu>
                 <Dropdown.Item href="#/action-1">English</Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Deustch</Dropdown.Item>
@@ -48,8 +49,8 @@ function Part2() {
             </Dropdown>
           </Col>
         </Row>
-      </Container>
+      )}
     </>
   );
 }
-export default Part2;
+export default FooterPart;
