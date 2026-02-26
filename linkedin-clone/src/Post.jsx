@@ -1,74 +1,247 @@
-import "./Post.css"
+import { useSelector, useDispatch } from "react-redux";
+import "./Post.css";
+import { useState } from "react";
+import { Modal, Button, Toast, Form } from "react-bootstrap";
+import { getPostsList } from "./redux/actions";
 
-function Post() {
+function Post(props) {
+  const profileObject = useSelector((currentState) => currentState.profile.object);
+
+  const token = useSelector((currentState) => currentState.profile.token);
+  const profile = useSelector((currentState) => currentState.profile);
+  const URL = useSelector((currentState) => currentState.posts.URL);
+  const dispatch = useDispatch();
+
+  const [showToast, setShowToast] = useState(false);
+  const toggleShowToast = () => setShowToast(!showToast);
+  const [showModal, setShowModal] = useState(false);
+  const [formValue, setFormValue] = useState(props.post.text);
+
+  const deletePost = () => {
+    fetch(URL + props.post._id, {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("Post deleted");
+          dispatch(getPostsList());
+        } else {
+          throw new Error("Error in adding the post");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const modifyPost = (post) => {
+    fetch(URL + props.post._id, {
+      method: "PUT",
+      body: JSON.stringify(post),
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log("Post modified");
+          dispatch(getPostsList());
+        } else {
+          throw new Error("Error in modifying the post");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+  const handleShow = () => setShowModal(true);
+
   return (
-    <div className="post-container" id="post-main-container">
-      <div className="post-header">
-        <img
-          src="https://picsum.photos/id/1025/50/50"
-          alt="Profilo Azienda"
-          className="post-profile-pic"
-        />
-        <div className="post-header-info">
-          <h3>Fisher Investments Italia</h3>
-          <p>23.050 follower</p>
-          <p className="post-time">Post sponsorizzato</p>
+    <>
+      <div className="post-container" id="post-main-container">
+        <div className="post-header align-items-center position-relative">
+          <img src={props.post.user.image} alt="Profilo Azienda" className="post-profile-pic object-fit-cover" />
+          <div className="post-header-info">
+            <h3>
+              {props.post.user.name} {props.post.user.surname}{" "}
+              {props.post.user._id === profileObject._id && (
+                <>
+                  &middot;
+                  <span className="text-secondary fw-light"> Tu</span>
+                </>
+              )}
+            </h3>
+            {props.post.user._id === profileObject._id && (
+              <p>
+                {profileObject.title} presso {profileObject.area}
+              </p>
+            )}
+
+            <p className="post-time">
+              {new Date(props.post.createdAt).toLocaleDateString("it-IT", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}{" "}
+              {props.post.user._id === profileObject._id && (
+                <>
+                  &middot;
+                  <span>
+                    {" "}
+                    <i className="bi bi-globe-americas"></i>
+                  </span>
+                </>
+              )}
+            </p>
+          </div>
+          {props.post.user._id === profileObject._id && (
+            <>
+              <Button onClick={toggleShowToast} className="mb-2 bg-transparent border-0 text-dark fw-bolder fs-3 me-4 p-0 position-absolute top-0 end-0">
+                ...
+              </Button>
+              <Toast
+                onClose={toggleShowToast}
+                show={showToast}
+                animation={false}
+                className="position-absolute top-50 mt-2 end-0 bg-white shadow-sm"
+                style={{ width: "20em" }}
+              >
+                <Toast.Body className="text-black text-opacity-75 fs-7 fw-semibold d-flex flex-column gap-3">
+                  <p
+                    className="d-flex gap-2 align-items-center px-2 justify-content-start"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      handleShow();
+                      toggleShowToast();
+                    }}
+                  >
+                    <i className="bi bi-pencil fs-5"></i> Modifica post
+                  </p>
+                  <p
+                    className="d-flex gap-2 align-items-center px-2 justify-content-start "
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      toggleShowToast();
+                      deletePost();
+                    }}
+                  >
+                    <i className="bi bi-trash-fill fs-5"></i>Elimina post
+                  </p>
+                </Toast.Body>
+              </Toast>
+            </>
+          )}
         </div>
-        <div className="post-header-options">
-          <span id="post-options-menu-btn">...</span>
+
+        <div className="post-body">
+          <p>
+            {props.post.text}
+            <span className="post-text-more" id="post-read-more-link">
+              ... altro
+            </span>
+          </p>
         </div>
-      </div>
 
-      <div className="post-body">
-        <p>
-          Per le persone con risparmi a partire da 500.000 € ottieni la guida e
-          gli aggiornamenti periodici per aiutarti a raggiungere la libertà{" "}
-          <span className="post-text-more" id="post-read-more-link">
-            ... altro
-          </span>
-        </p>
-      </div>
+        <div className="post-media">
+          <img src={`https://picsum.photos/seed/${props.post.text.split(" ")[0]}/500/500`} alt="Strada nel deserto" className="post-main-image" />
 
-      <div className="post-media">
-        <img
-          src="https://picsum.photos/id/29/500/500"
-          alt="Strada nel deserto"
-          className="post-main-image"
-        />
-
-        <div className="post-media-footer">
+          {/* <div className="post-media-footer">
           <h4>Puoi smettere di lavorare prima dei 67 anni?</h4>
           <p>121 invii</p>
 
           <button className="post-learn-more-btn" id="post-learn-more-btn">
             Scopri di più
           </button>
+        </div> */}
+        </div>
+
+        <div className="post-stats">
+          <span className="post-reactions">👍❤️ 198</span>
+          <span className="post-comments">1 diffusione post</span>
+        </div>
+
+        <hr className="post-divider" />
+
+        <div className="post-actions">
+          <button className="post-action-btn" id="post-action-btn-like">
+            👍 Consiglia
+          </button>
+          <button className="post-action-btn" id="post-action-btn-comment">
+            💬 Commenta
+          </button>
+          <button className="post-action-btn" id="post-action-btn-share">
+            🔁 Diffondi il post
+          </button>
+          <button className="post-action-btn" id="post-action-btn-send">
+            ✈️ Invia
+          </button>
         </div>
       </div>
+      {/* INIZIO MODALE */}
+      <Modal show={showModal} onHide={handleClose} animation={false}>
+        <Modal.Header className="align-items-start p-4 border-bottom-0" closeButton>
+          <Modal.Title>
+            <div className="d-flex align-items-center gap-3">
+              <img src={profile.object.image} alt="Profilo" className="createpost-profile-pic" />
+              <div className="lh-sm">
+                <p className="mb-0 fs-5">
+                  {profile.object.name} {profile.object.surname}
+                </p>
+                <p className="fs-7 fw-normal mb-0">Pubblica: Chiunque</p>
+              </div>
+            </div>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="px-2">
+          <Form>
+            <Form.Group>
+              <Form.Control
+                as="textarea"
+                rows={8}
+                placeholder="Di cosa vorresti parlare?"
+                className="border-0 fs-5"
+                value={formValue}
+                onChange={(e) => {
+                  setFormValue(e.target.value);
+                }}
+              />
+            </Form.Group>
+          </Form>
+          <div className="px-3">
+            <i className="bi bi-emoji-smile"></i>
+          </div>
+        </Modal.Body>
+        <Modal.Footer className="px-4">
+          {formValue === "" && (
+            <Button className="border-0 rounded-pill py-1 px-3 bg-secondary bg-opacity-25 text-secondary fw-semibold" disabled>
+              Salva
+            </Button>
+          )}
 
-      <div className="post-stats">
-        <span className="post-reactions">👍❤️ 198</span>
-        <span className="post-comments">1 diffusione post</span>
-      </div>
-
-      <hr className="post-divider" />
-
-      <div className="post-actions">
-        <button className="post-action-btn" id="post-action-btn-like">
-          👍 Consiglia
-        </button>
-        <button className="post-action-btn" id="post-action-btn-comment">
-          💬 Commenta
-        </button>
-        <button className="post-action-btn" id="post-action-btn-share">
-          🔁 Diffondi il post
-        </button>
-        <button className="post-action-btn" id="post-action-btn-send">
-          ✈️ Invia
-        </button>
-      </div>
-    </div>
-  )
+          {formValue !== "" && (
+            <Button
+              onClick={() => {
+                modifyPost({ text: formValue });
+                handleClose();
+              }}
+              className="border-0 rounded-pill py-1 px-3 bg-primary text-light fw-semibold"
+            >
+              Salva
+            </Button>
+          )}
+        </Modal.Footer>
+      </Modal>
+      {/* FINE MODALE */}
+    </>
+  );
 }
 
-export default Post
+export default Post;

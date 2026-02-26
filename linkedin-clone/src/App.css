@@ -29,3 +29,49 @@ body {
 .nav-link:hover small {
   color: #000000;
 }
+
+.page-wrapper {
+  background-color: #f3f2ef;
+  min-height: 100vh;
+  padding: 12px 0;
+}
+
+.experience-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 16px;
+}
+
+.back-arrow {
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-arrow:hover {
+  transform: translateX(-3px);
+}
+
+.icon-action {
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: #666;
+}
+
+.icon-action:hover {
+  transform: scale(1.15);
+  color: #0a66c2;
+}
+
+.experience-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease;
+}
+
+.experience-item:hover {
+  background-color: #fafafa;
+}

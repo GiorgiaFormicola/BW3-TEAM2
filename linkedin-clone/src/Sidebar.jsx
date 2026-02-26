@@ -1,38 +1,38 @@
-import "./Sidebar.css"
+import { useSelector } from "react-redux";
+import "./Sidebar.css";
 
 function Sidebar() {
+  const profile = useSelector((currentState) => currentState.profile.object);
   return (
     <div className="sidebar-container" id="sidebar-main-container">
-      {/* SCHEDA 1: Profilo principale */}
-      <div className="sidebar-card">
-        <div className="sidebar-cover"></div>
+      {profile && (
+        <>
+          {/* SCHEDA 1: Profilo principale */}
+          <div className="sidebar-card">
+            <div className="sidebar-cover"></div>
 
-        <div className="sidebar-profile-section">
-          <img
-            src="https://picsum.photos/id/1005/70/70"
-            alt="Profilo"
-            className="sidebar-profile-pic"
-          />
-          {/* Aggiunto id */}
-          <span className="sidebar-add-icon" id="sidebar-add-photo-btn">
-            ➕
-          </span>
-        </div>
+            <div className="sidebar-profile-section">
+              <img src={profile.image} alt="Profilo" className="sidebar-profile-pic" />
+              {/* Aggiunto id */}
+              <span className="sidebar-add-icon" id="sidebar-add-photo-btn">
+                ➕
+              </span>
+            </div>
 
-        <div className="sidebar-user-info">
-          <h2>Francesco Proietti</h2>
-          <p>Roma, Lazio</p>
+            <div className="sidebar-user-info">
+              <h2>
+                {profile.name} {profile.surname}
+              </h2>
+              <p>{profile.area}</p>
 
-          {/* Aggiunto id e prefisso classe */}
-          <button
-            className="sidebar-experience-btn"
-            id="sidebar-add-experience-btn"
-          >
-            ➕ Esperienza
-          </button>
-        </div>
-      </div>
-
+              {/* Aggiunto id e prefisso classe */}
+              <button className="sidebar-experience-btn" id="sidebar-add-experience-btn">
+                ➕ Esperienza
+              </button>
+            </div>
+          </div>
+        </>
+      )}
       {/* SCHEDA 2: Collegamenti */}
       <div className="sidebar-card sidebar-padding">
         {/* Aggiunto id perché è una zona cliccabile */}
@@ -47,13 +47,10 @@ function Sidebar() {
 
       {/* SCHEDA 3: Premium */}
       <div className="sidebar-card sidebar-padding">
-        <p className="sidebar-premium-text">
-          Sblocca nuovi collegamenti con Premium
-        </p>
+        <p className="sidebar-premium-text">Sblocca nuovi collegamenti con Premium</p>
         {/* Aggiunto id perché è un link */}
         <p className="sidebar-premium-link" id="sidebar-premium-promo-link">
-          <span className="sidebar-gold-icon">🟨</span> Prova di nuovo Premium
-          gratis
+          <span className="sidebar-gold-icon">🟨</span> Prova di nuovo Premium gratis
         </p>
       </div>
 
@@ -74,7 +71,7 @@ function Sidebar() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

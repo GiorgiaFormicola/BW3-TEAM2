@@ -6,14 +6,26 @@ import { Provider } from "react-redux";
 import ProfilePage from "./components/ProfilePage";
 import MyFooter from "./components/MyFooter";
 import MyNavbar from "./components/MyNavbar";
-import JobsSection from "./components/JobsSection";
+import HomePage from "./components/HomePage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import JobsPage from "./components/JobsPage";
+import ExperiencesPage from "./components/ExperiencePage";
+
 function App() {
   return (
     <Provider store={store}>
-      <MyNavbar />
-      <ProfilePage></ProfilePage>
-      <MyFooter></MyFooter>
-      <JobsSection></JobsSection>
+      <BrowserRouter>
+        <MyNavbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route
+            path="/jobs"
+            // element={<JobsPage />}
+          />
+          <Route path="/experiences" element={<ExperiencesPage />} />
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 }
