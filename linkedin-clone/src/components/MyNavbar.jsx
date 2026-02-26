@@ -54,7 +54,7 @@ const MyNavbar = () => {
   return (
     <Navbar bg="light" expand="md" className="shadow-sm py-2">
       <Container fluid>
-        <div className="d-flex align-items-center ms-5 ps-5">
+        <div className="d-flex align-items-center gap-2">
           <Navbar.Brand href="#">
             <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="logo" width="34" />
           </Navbar.Brand>
@@ -71,11 +71,11 @@ const MyNavbar = () => {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-evenly">
-          <Nav className="align-items-center text-center">
+        <Navbar.Collapse id="basic-navbar-nav" className="">
+          <Nav className="align-items-center text-center w-100">
             <Nav.Link href="#" className="mx-4 d-flex flex-column align-items-center">
               <House size={20} className="nav-icon" />
-              <small className="d-none d-lg-inline">Home</small>
+              <small className="d-none d-lg-inline text-nowrap">Home</small>
             </Nav.Link>
 
             <Nav.Link href="#" className="mx-4 d-flex flex-column align-items-center">
@@ -184,7 +184,7 @@ const MyNavbar = () => {
               {showBusiness && (
                 <div
                   className="position-absolute bg-white shadow-lg rounded border p-4 text-dark"
-                  style={{ top: "55px", right: "0", width: "650px", zIndex: 2000, cursor: "default" }}
+                  style={{ top: "55px", right: "0", width: "90vw", maxWidth: "650px", zIndex: 2000, cursor: "default" }}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <div className="d-flex justify-content-between align-items-start mb-4">
@@ -300,6 +300,14 @@ const MyNavbar = () => {
             </div>
           </Nav>
         </Navbar.Collapse>
+        <Form className="d-md-none mt-3 w-100">
+          <InputGroup>
+            <InputGroup.Text>
+              <Search size={16} />
+            </InputGroup.Text>
+            <FormControl placeholder="Cerca" />
+          </InputGroup>
+        </Form>
       </Container>
     </Navbar>
   );
