@@ -4,12 +4,14 @@ import "./App.css";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import ProfilePage from "./components/ProfilePage";
+import MyFooter from "./components/MyFooter";
 import MyNavbar from "./components/MyNavbar";
 import HomePage from "./components/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import JobsPage from "./components/JobsPage";
 import ExperiencesPage from "./components/ExperiencePage";
-
+import JobsSection from "./components/JobsSection";
+import JobsPage from "./components/JobsPage";
 function App() {
   return (
     <Provider store={store}>
@@ -18,10 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route
-            path="/jobs"
-            // element={<JobsPage />}
-          />
+          <Route path="/jobs" element={<JobsPage />} />
           <Route path="/experiences" element={<ExperiencesPage />} />
         </Routes>
       </BrowserRouter>

@@ -16,19 +16,28 @@ import {
   PlusLg,
 } from "react-bootstrap-icons";
 import { useState, useRef, useEffect } from "react";
-// PER OTTENERE PROFILO UTENTE
 import { useDispatch } from "react-redux";
+import { setCategory } from "../redux/actions/index.js";
+//import { useSelector } from "react-redux";
+// PER OTTENERE PROFILO UTENTE
+
 import { getMyProfileInfo } from "../redux/actions";
 // PER OTTENERE PROFILO UTENTE
 
 const MyNavbar = () => {
+  const [inputValue, setInputValue] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setCategory(inputValue));
+  };
+  const dispatch = useDispatch();
+  //const category = useSelector((state) => state.search.category);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   const [showBusiness, setShowBusiness] = useState(false);
   const businessRef = useRef(null);
 
   // PER OTTENERE PROFILO UTENTE
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getMyProfileInfo());
@@ -59,12 +68,12 @@ const MyNavbar = () => {
             <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="logo" width="34" />
           </Navbar.Brand>
 
-          <Form className="d-none d-md-block ms-0">
+          <Form onSubmit={handleSubmit} className="d-none d-md-block ms-0">
             <InputGroup style={{ width: "250px" }}>
               <InputGroup.Text className="bg-white border-end-0 rounded-start-pill ps-3">
                 <Search size={16} className="text-muted" />
               </InputGroup.Text>
-              <FormControl type="search" placeholder="Cerca" className="border-start-0 rounded-end-pill px-2" />
+              <FormControl type="search" placeholder="Cerca" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
             </InputGroup>
           </Form>
         </div>

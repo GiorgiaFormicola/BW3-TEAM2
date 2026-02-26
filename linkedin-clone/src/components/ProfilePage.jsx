@@ -5,7 +5,7 @@ import ProfileSections from "./ProfileSection";
 import Activity from "./Activity";
 import Analisi from "./Analisi";
 import MyFooter from "./MyFooter";
-
+import FooterPart from "./FooterpPart";
 const ProfilePage = () => {
   return (
     <>
@@ -17,6 +17,9 @@ const ProfilePage = () => {
               <Activity></Activity>
               <Analisi></Analisi>
               <ProfileSections></ProfileSections>
+              <Col xs={12} md={7} lg={8}>
+                <MyFooter></MyFooter>
+              </Col>
             </Row>
           </Col>
           <Col xs={12} md={5} lg={4} className="mt-3 mt-md-0 col-xxl-3">
@@ -24,7 +27,6 @@ const ProfilePage = () => {
           </Col>
         </Row>
       </Container>
-      <MyFooter></MyFooter>
     </>
   );
 };
