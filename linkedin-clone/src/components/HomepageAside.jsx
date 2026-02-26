@@ -1,5 +1,6 @@
 import { Card, Button, Image } from "react-bootstrap";
-import { ChevronRight, EyeFill, PersonPlusFill } from "react-bootstrap-icons";
+import { useState } from "react";
+import { InfoSquareFill, ChevronDown, ChevronUp, ChevronRight, EyeFill, PersonPlusFill } from "react-bootstrap-icons";
 import "../assets/Aside.css";
 import imgAssets from "../assets/img/Ads.png";
 import snakeAsset from "../assets/img/Snake.png";
@@ -13,9 +14,64 @@ const HomepageAside = () => {
     { id: 5, name: "Matteo Villa", title: "Android Developer @ Spotify", img: "https://placedog.net/60/60" },
   ];
 
+  const [showAllNews, setShowAllNews] = useState(false);
+
+  const newsList = [
+    { id: 1, title: "I trend del settore tech 2026", time: "2 ore fa", readers: "12.450 lettori" },
+    { id: 2, title: "Nuove regole per lo smart working", time: "5 ore fa", readers: "8.120 lettori" },
+    { id: 3, title: "Venezia: record di turisti nel weekend", time: "1 giorno fa", readers: "5.300 lettori" },
+    { id: 4, title: "L'intelligenza artificiale nel design", time: "1 giorno fa", readers: "15.900 lettori" },
+    { id: 5, title: "Mercato immobiliare in crescita", time: "2 giorni fa", readers: "3.200 lettori" },
+    { id: 6, title: "Sostenibilità: le nuove direttive", time: "2 giorni fa", readers: "4.100 lettori" },
+  ];
+
+  const visibleNews = showAllNews ? newsList : newsList.slice(0, 5);
+
   return (
     <div className="profile-aside">
+      {/* SEZIONE NOTIZIE */}
+
+      <Card className="aside-card mb-2 p-3 border-1 rounded-3">
+        <div className="d-flex justify-content-between align-items-center mb-2">
+          <h6 className="aside-section-title mb-0 fw-bold" style={{ fontSize: "1rem" }}>
+            LinkedIn Notizie
+          </h6>
+          <InfoSquareFill size={14} className="text-muted cursor-pointer" />
+        </div>
+
+        <ul className="list-unstyled mb-0">
+          {visibleNews.map((news) => (
+            <li key={news.id} className="news-item mb-2">
+              <div className="d-flex align-items-start">
+                <span className="news-dot me-2">•</span>
+                <div>
+                  <span className="news-title text-truncate d-block" style={{ maxWidth: "250px" }}>
+                    {news.title}
+                  </span>
+                  <span className="news-time">
+                    {news.time} • {news.readers}
+                  </span>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <button className="btn-show-more d-flex align-items-center mt-1" onClick={() => setShowAllNews(!showAllNews)}>
+          {showAllNews ? (
+            <>
+              Meno dettagli <ChevronUp className="ms-1" />
+            </>
+          ) : (
+            <>
+              Vedi altro <ChevronDown className="ms-1" />
+            </>
+          )}
+        </button>
+      </Card>
+
       {/* Snake AD */}
+
       <Card className="aside-card mb-2 p-3 border-1 rounded-3">
         <div className="mb-3">
           <h6 className="aside-section-title mb-0 fw-bold" style={{ fontSize: "0.9rem" }}>

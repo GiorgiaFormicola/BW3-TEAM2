@@ -107,10 +107,12 @@
   border-bottom: none;
 }
 
+/* "Snake" */
+
 .puzzle-icon-container {
   width: 40px;
   height: 40px;
-  background-color: #f8f9fa; /* Grigio chiarissimo di sfondo */
+  background-color: #f8f9fa;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,12 +121,10 @@
 }
 
 .puzzle-icon-img {
-  width: 40px; /* L'immagine interna ancora più piccola */
-
+  width: 40px;
   object-fit: contain;
 }
 
-/* Testo laterale */
 .puzzle-title {
   font-size: 0.85rem;
   font-weight: 600;
@@ -138,9 +138,52 @@
   line-height: 1.2;
 }
 
-/* Icona visibilità (Eye) piccola */
 .visibility-icon {
   font-size: 0.75rem;
   color: rgba(0, 0, 0, 0.6);
   margin-left: 4px;
+}
+
+/* Sezione Notizie */
+.news-item {
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.news-item:hover {
+  background-color: #f3f3f3;
+}
+
+.news-dot {
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-top: -5px;
+}
+
+.news-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  display: block;
+}
+
+.news-time {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.btn-show-more {
+  border: none;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.btn-show-more:hover {
+  background-color: #f3f3f3;
 }
