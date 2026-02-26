@@ -1,9 +1,8 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Col, Card, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import "../assets/ProfileMainSection.css";
 import { useSelector } from "react-redux";
-import { current } from "@reduxjs/toolkit";
 
 const ProfileMainSection = () => {
   const [show, setShow] = useState(false);
@@ -14,22 +13,24 @@ const ProfileMainSection = () => {
   const handleShow = () => setShow(true);
 
   return (
-    // <div className="bg-light min-vh-100 ">
-    //   <Container fluid="md" className="min-vh-100 py-4 px-0 px-xxl-5">
-    //     <Row className="bg-primary justify-content-between">
-    //       <Col xs={12} md={7} lg={8} className=" min-vh-100">
-    //         <Row>
-
     <>
       {profileObject && (
         <>
           {/* INIZIO COLONNA */}
           <Col>
             <Card className="rounded-3" id="profile-card">
-              <Card.Img variant="top" src="https://placecats.com/300/70" />
+              <Card.Img variant="top" src={`https://picsum.photos/id/2/300/70`} />
               <i className="bi bi-camera-fill blu-linkedin-text position-absolute top-0 end-0 fs-6 me-4 mt-4 me-md-3 mt-md-3 me-lg-4 mt-lg-4 bg-white px-2 py-1 rounded-circle"></i>
               <Card.Body className="px-4 position-relative">
-                <div className=" position-absolute" id="user-picture">
+                <div
+                  style={{ cursor: "pointer" }}
+                  className=" position-absolute"
+                  id="user-picture"
+                  onClick={() => {
+                    setModal(3);
+                    handleShow();
+                  }}
+                >
                   <div className="rounded-circle overflow-hidden">
                     <img src={profileObject.image} alt="" style={{ height: "8em", width: "8em" }} />
                   </div>
@@ -113,7 +114,7 @@ const ProfileMainSection = () => {
             {/* INIZIO CONTENUTO MODALE CLICK NOME PROFILO */}
             {modal === 1 && (
               <>
-                <Modal.Header closeButton className="d-flex align-items-end px-4">
+                <Modal.Header closeButton className="d-flex align-items-center px-4">
                   <Modal.Title className="fs-5">Informazioni su questo profilo</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="px-4">
@@ -123,15 +124,20 @@ const ProfileMainSection = () => {
                   <div className="py-1">
                     <h6 className="mb-0">Iscrizione effettuata</h6>
                     <p className="fs-7 text-muted">
-                      {profileObject.createdAt}
-                      {/* settembre 2018 */}
+                      {new Date(profileObject.createdAt).toLocaleDateString("it-IT", {
+                        year: "numeric",
+                        month: "long",
+                      })}
                     </p>
                   </div>
                   <div className="py-1">
                     <h6 className="mb-0">Informazioni di contatto</h6>
                     <p className="fs-7 text-muted">
-                      Ultimo aggiornamento: {profileObject.updatedAt}
-                      {/* più di 1 anno fa */}
+                      Ultimo aggiornamento:{" "}
+                      {new Date(profileObject.updatedAt).toLocaleDateString("it-IT", {
+                        year: "numeric",
+                        month: "long",
+                      })}
                     </p>
                   </div>
                   <hr className="text-secondary mt-1 mb-2" />
@@ -158,7 +164,7 @@ const ProfileMainSection = () => {
             {/* INIZIO CONTENUTO MODALE CLICK INFO CONTATTO */}
             {modal === 2 && (
               <>
-                <Modal.Header closeButton className="d-flex align-items-end px-4">
+                <Modal.Header closeButton className="d-flex align-items-center px-4">
                   <Modal.Title className="fs-5">
                     {profileObject.name} {profileObject.surname}
                   </Modal.Title>
@@ -191,17 +197,49 @@ const ProfileMainSection = () => {
               </>
             )}
             {/* FINE CONTENUTO MODALE CLICK INFO CONTATTO */}
+            {/* INIZIO CONTENUTO MODALE CLICK CAMBIO FOTO */}
+            {modal === 3 && (
+              <>
+                <Modal.Header closeButton className="d-flex align-items-center px-4">
+                  <Modal.Title className="fs-5">Aggiorna foto</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="px-5 mx-3  my-3 text-center">
+                  <p className="mb-0 fs-4 text-center">La tua foto non deve per forza essere un tuo primo piano! Ma qualcosa che ti rappresenti.</p>
+                  <img src="https://static.licdn.com/aero-v1/sc/h/c5ybm82ti04zuasz2a0ubx7bu" alt="Esempi di foto del profilo" className="img-fluid my-4" />
+                  <small className="text-muted">
+                    Chiediamo agli utenti di LinkedIn di utilizzare le loro vere identità, quindi scatta o carica una tua foto. Poi ritagliala, applica dei
+                    filtri e perfezionala come vuoi.
+                  </small>
+                </Modal.Body>
+                <Modal.Footer className="justify-content-between px-4">
+                  <a href="" className="">
+                    Fotogrammi
+                  </a>
+                  <div className="d-flex gap-2">
+                    <Button className="rounded-pill px-3 fw-semibold bg-transparent text-primary py-1 text-nowrap">Usa fotocamera</Button>
+
+                    <Form>
+                      <Form.Group>
+                        <Form.Label
+                          htmlFor="file-upload"
+                          style={{ marginBottom: "0", cursor: "pointer" }}
+                          className="btn bg-primary text-light rounded-pill px-3 fw-semibold py-1 text-nowrap"
+                        >
+                          Carica foto
+                        </Form.Label>
+                        <Form.Control className="d-none" type="file" accept="image/*,.pdf" id="file-upload" />
+                      </Form.Group>
+                    </Form>
+                  </div>
+                </Modal.Footer>
+              </>
+            )}
+            {/* FINE CONTENUTO MODALE CLICK CAMBIO FOTO */}
           </Modal>
           {/* FINE MODALE */}
         </>
       )}
     </>
-    //         </Row>
-    //       </Col>
-    //       <Col lg={3} className="bg-warning min-vh-100"></Col>
-    //     </Row>
-    //   </Container>
-    // </div>
   );
 };
 

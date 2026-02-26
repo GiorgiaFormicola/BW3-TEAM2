@@ -135,4 +135,9 @@
   .bi-camera-fill:hover {
     color: #004182;
   }
+
+  .modal-footer a {
+    color: rgb(10, 102, 194);
+    text-decoration: none;
+  }
 }
