@@ -53,7 +53,7 @@ export const getPostsList = () => {
         }
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         dispatch({
           type: GET_POSTS,
           payload: data,

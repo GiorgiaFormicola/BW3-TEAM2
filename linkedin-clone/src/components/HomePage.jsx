@@ -6,14 +6,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPostsList } from "../redux/actions";
 
-// const postsListURL = "https://striveschool-api.herokuapp.com/api/posts/";
-
 const HomePage = () => {
   const postsList = useSelector((currentState) => currentState.posts.list);
   const dispatch = useDispatch();
 
+  // const [commentsArray, setCommentsArray] = useState(null);
+
+  // const getAllComments = () => {
+  //   fetch(URL, {
+  //     headers: {
+  //       Authorization: key,
+  //     },
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       } else {
+  //         throw new Error("Error in getting the post comments");
+  //       }
+  //     })
+  //     .then((allComments) => {
+  //       setCommentsArray(allComments);
+  //     })
+  //     .catch((err) => {
+  //       console.log("ERROR", err);
+  //     });
+  // };
+
   useEffect(() => {
     dispatch(getPostsList());
+    // getAllComments();
   }, []);
 
   return (

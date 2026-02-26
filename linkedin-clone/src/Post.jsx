@@ -1,10 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
 import "./Post.css";
-import { useState } from "react";
-import { Modal, Button, Toast, Form } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Modal, Button, Toast, Form, InputGroup } from "react-bootstrap";
 import { getPostsList } from "./redux/actions";
+import AddComment from "./components/AddComment";
+import CommentList from "./components/CommentList";
 
-function Post(props) {
+const commentsURL = "https://striveschool-api.herokuapp.com/api/comments/";
+const key =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTczM2Q1ODg1ZTNiMTAwMTViNWVkOTIiLCJpYXQiOjE3NzIxMDg3NDIsImV4cCI6MTc3MzMxODM0Mn0.49cRPY-_O-5kIvY7cftMLKypx68yUSC1-5UBtRyQDl4";
+
+const Post = (props) => {
   const profileObject = useSelector((currentState) => currentState.profile.object);
 
   const token = useSelector((currentState) => currentState.profile.token);
@@ -63,6 +69,36 @@ function Post(props) {
     setShowModal(false);
   };
   const handleShow = () => setShowModal(true);
+
+  // FUNZIONE PER OTTENERE COMMENTI DEL POST
+  const [commentsArray, setCommentsArray] = useState(null);
+
+  const getPostComments = () => {
+    fetch(commentsURL, {
+      headers: {
+        Authorization: key,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Error in getting the post comments");
+        }
+      })
+      .then((allComments) => {
+        const postComments = allComments.filter((comment) => comment.elementId === props.post._id);
+        setCommentsArray(postComments);
+      })
+      .catch((err) => {
+        console.log("ERROR", err);
+      });
+  };
+
+  useEffect(() => {
+    getPostComments();
+  }, []);
+  // FUNZIONE PER OTTENERE COMMENTI DEL POST
 
   return (
     <>
@@ -165,7 +201,11 @@ function Post(props) {
 
         <div className="post-stats">
           <span className="post-reactions">👍❤️ 198</span>
-          <span className="post-comments">1 diffusione post</span>
+
+          <span className="post-comments">
+            {/* {props.comments.length === 1 && "1 commento"}
+            {props.comments.length !== 1 && `${props.comments.length} commenti`} */}
+          </span>
         </div>
 
         <hr className="post-divider" />
@@ -184,6 +224,10 @@ function Post(props) {
             ✈️ Invia
           </button>
         </div>
+        <AddComment postID={props.post._id}></AddComment>
+        {commentsArray && <CommentList comments={commentsArray}></CommentList>}
+
+        {/* <CommentArea postID={props.post._id} comments=></CommentArea> */}
       </div>
       {/* INIZIO MODALE */}
       <Modal show={showModal} onHide={handleClose} animation={false}>
@@ -242,6 +286,6 @@ function Post(props) {
       {/* FINE MODALE */}
     </>
   );
-}
+};
 
 export default Post;
