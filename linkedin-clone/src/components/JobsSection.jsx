@@ -1,34 +1,27 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { fetchJobs } from "../redux/actions/index.js";
 
 const JobsSection = () => {
-  const [jobs, setJobs] = useState([]);
-  const [category, setCategory] = useState("");
+  const dispatch = useDispatch();
+
+  const category = useSelector((state) => state.search.category);
+  const { jobs, loading, error } = useSelector((state) => state.jobs);
   useEffect(() => {
-    fetch(`https://strive-benchmark.herokuapp.com/api/jobs?category=${category}&limit=10`)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("Error in getting the jobs");
-        }
-      })
-      .then((data) => {
-        setJobs(data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    dispatch(fetchJobs(category || "development"));
+  }, [category, dispatch]);
 
   return (
     <Container className="mt-4">
       <h4 className="mb-4">Le principali offerte di lavoro per te</h4>
 
-      {/* DEVO MODIFICARE LO STILE */}
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-danger">{error}</p>}
+
       <Row className="g-4">
         {jobs.slice(0, 10).map((job) => (
-          <Col key={job._id} xs={12} md={6} lg={4}>
+          <Col key={job._id} xs={12}>
             <Card className="h-100 shadow-sm border-0 rounded-3">
               <Card.Body>
                 <Card.Title>{job.title}</Card.Title>
@@ -47,7 +40,7 @@ const JobsSection = () => {
                   <strong>Location:</strong> {job.candidate_required_location}
                 </Card.Text>
 
-                <Button variant="primary" size="sm" href={job.url} target="_blank">
+                <Button variant="primary" size="sm" href={job.url} target="_blank" rel="noopener noreferrer">
                   Vedi Offerta
                 </Button>
               </Card.Body>

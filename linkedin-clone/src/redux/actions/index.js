@@ -29,3 +29,42 @@ export const getMyProfileInfo = () => {
       });
   };
 };
+
+export const SET_CATEGORY = "SET_CATEGORY";
+
+export const setCategory = (category) => {
+  return {
+    type: SET_CATEGORY,
+    payload: category,
+  };
+};
+
+export const SET_JOBS = "SET_JOBS";
+export const SET_LOADING = "SET_LOADING";
+export const SET_ERROR = "SET_ERROR";
+
+export const fetchJobs = (category) => {
+  return async (dispatch) => {
+    dispatch({ type: SET_LOADING, payload: true });
+
+    try {
+      const res = await fetch(`https://strive-benchmark.herokuapp.com/api/jobs?category=${category}&limit=10`);
+
+      if (!res.ok) {
+        throw new Error("Error fetching jobs");
+      }
+
+      const data = await res.json();
+
+      dispatch({
+        type: SET_JOBS,
+        payload: data.data,
+      });
+
+      dispatch({ type: SET_LOADING, payload: false });
+    } catch (error) {
+      dispatch({ type: SET_ERROR, payload: error.message });
+      dispatch({ type: SET_LOADING, payload: false });
+    }
+  };
+};

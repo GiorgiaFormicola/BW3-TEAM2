@@ -16,13 +16,22 @@ import {
   PlusLg,
 } from "react-bootstrap-icons";
 import { useState, useRef, useEffect } from "react";
-import JobsSection from "./JobsSection";
+import { useDispatch } from "react-redux";
+import { setCategory } from "../redux/actions/index.js";
+//import { useSelector } from "react-redux";
 const MyNavbar = () => {
+  const [inputValue, setInputValue] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setCategory(inputValue));
+  };
+  const dispatch = useDispatch();
+  //const category = useSelector((state) => state.search.category);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   const [showBusiness, setShowBusiness] = useState(false);
   const businessRef = useRef(null);
-  const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -47,20 +56,12 @@ const MyNavbar = () => {
             <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="logo" width="34" />
           </Navbar.Brand>
 
-          <Form className="d-none d-md-block ms-0">
+          <Form onSubmit={handleSubmit} className="d-none d-md-block ms-0">
             <InputGroup style={{ width: "250px" }}>
               <InputGroup.Text className="bg-white border-end-0 rounded-start-pill ps-3">
                 <Search size={16} className="text-muted" />
               </InputGroup.Text>
-              <FormControl
-                type="search"
-                placeholder="Cerca"
-                className="border-start-0 rounded-end-pill px-2"
-                value={searchValue}
-                onChange={(e) => {
-                  setSearchValue(e.target.value);
-                }}
-              />
+              <FormControl type="search" placeholder="Cerca" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
             </InputGroup>
           </Form>
         </div>
