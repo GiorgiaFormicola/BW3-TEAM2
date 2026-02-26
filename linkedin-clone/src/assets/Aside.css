@@ -106,3 +106,41 @@
 .viewed-user-item:last-child {
   border-bottom: none;
 }
+
+.puzzle-icon-container {
+  width: 40px;
+  height: 40px;
+  background-color: #f8f9fa; /* Grigio chiarissimo di sfondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.puzzle-icon-img {
+  width: 40px; /* L'immagine interna ancora più piccola */
+
+  object-fit: contain;
+}
+
+/* Testo laterale */
+.puzzle-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.puzzle-desc {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.2;
+}
+
+/* Icona visibilità (Eye) piccola */
+.visibility-icon {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-left: 4px;
+}

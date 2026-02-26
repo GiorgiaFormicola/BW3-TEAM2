@@ -1,6 +1,6 @@
 import { Card, Button, Image } from "react-bootstrap";
 import { Pencil, PersonPlusFill, Briefcase, BookmarkFill, BellFill } from "react-bootstrap-icons";
-import "../assets/ProfileAside.css";
+import "../assets/Aside.css";
 import imgAssets from "../assets/img/Ads.png";
 
 const ProfileAside = ({ profile }) => {
@@ -21,6 +21,7 @@ const ProfileAside = ({ profile }) => {
 
   return (
     <div className="profile-aside">
+      {/* Lingue */}
       <Card className="aside-card p-3 mb-2">
         <div className="d-flex justify-content-between align-items-start mb-3 border-bottom pb-2">
           <div>

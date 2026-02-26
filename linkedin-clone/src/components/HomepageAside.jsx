@@ -1,8 +1,8 @@
 import { Card, Button, Image } from "react-bootstrap";
-import { Pencil, PersonPlusFill, Briefcase, BookmarkFill, BellFill } from "react-bootstrap-icons";
-import "../assets/ProfileAside.css";
+import { ChevronRight, EyeFill, PersonPlusFill } from "react-bootstrap-icons";
+import "../assets/Aside.css";
 import imgAssets from "../assets/img/Ads.png";
-import snakeAsset from "../assets/img/Snake";
+import snakeAsset from "../assets/img/Snake.png";
 
 const HomepageAside = () => {
   const suggestedUsers = [
@@ -15,17 +15,37 @@ const HomepageAside = () => {
 
   return (
     <div className="profile-aside">
-      <Card className="aside-card mb-2 overflow-hidden border-0">
-        <Image src={imgAssets} alt="Promozione" fluid />
+      {/* Snake AD */}
+      <Card className="aside-card mb-2 p-3 border-1 rounded-3">
+        <div className="mb-3">
+          <h6 className="aside-section-title mb-0 fw-bold" style={{ fontSize: "0.9rem" }}>
+            Rompicapo di LinkedIn in evidenza
+          </h6>
+        </div>
+
+        <div className="puzzle-card d-flex align-items-start justify-content-between p-2 rounded">
+          <div className="d-flex align-items-start">
+            <div className="puzzle-icon-container me-3" style={{ width: "52px", height: "52px" }}>
+              <Image src={snakeAsset} className="puzzle-icon-img" style={{ width: "80px" }} />
+            </div>
+
+            <div className="d-flex flex-column">
+              <p className="puzzle-title mb-0">Zip — un rompicapo veloce</p>
+              <p className="puzzle-desc mb-1">Risolvilo in 60 secondi o meno!</p>
+
+              <div className="d-flex align-items-center">
+                <EyeFill className="visibility-icon me-1" style={{ fontSize: "0.7rem" }} />
+                <span className="puzzle-desc" style={{ fontSize: "0.7rem" }}>
+                  Solo tu puoi vedere il punteggio
+                </span>
+                <ChevronRight className="text-muted mt-2" size={16} />
+              </div>
+            </div>
+          </div>
+        </div>
       </Card>
 
-      {/* 3. PEOPLE YOU MAY KNOW */}
-
-      <Card className="aside-card mb-2 overflow-hidden border-0">
-        <Image src={snakeAsset} alt="SnakeGame" fluid />
-      </Card>
-
-      {/* 3. PEOPLE YOU MAY KNOW */}
+      {/* PEOPLE YOU MAY KNOW */}
       <Card className="aside-card p-3 mb-2">
         <h6 className="aside-title mb-1">Persone che potresti conoscere</h6>
         <p className="aside-text-muted mb-0">Dal tuo settore</p>
@@ -42,6 +62,10 @@ const HomepageAside = () => {
             </div>
           </div>
         ))}
+      </Card>
+      {/* ADS */}
+      <Card className="aside-card mb-2 overflow-hidden border-0">
+        <Image src={imgAssets} alt="Promozione" fluid />
       </Card>
     </div>
   );
