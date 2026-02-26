@@ -3,10 +3,11 @@ import { SlPencil } from "react-icons/sl";
 import { FiPlus } from "react-icons/fi";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getExperiences, deleteExperience } from "../redux/actions/experienceActions";
+import { getExperiences } from "../redux/actions/experienceActions";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import AddExperienceForm from "./AddExperienceForm";
+import { useNavigate } from "react-router-dom";
 
 function ProfileSections() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function ProfileSections() {
   const profile = useSelector((state) => state.profile.object); //  prendo il profilo corrente (cosi ottengo l'_id, grazie sergio per avermi spiegato bene sta parte tvb)
   const [showModal, setShowModal] = useState(false); //  stato per controllare apertura/chiusura della Modal
   const [selectedExperience, setSelectedExperience] = useState(null); // stato per capire se sto modificando o creando
+  const navigate = useNavigate();
   //  Vedo quando cambia il profilo
   console.log("Profilo corrente:", profile);
 
@@ -27,12 +29,6 @@ function ProfileSections() {
 
   const handleAdd = () => {
     setSelectedExperience(null); // Modal per aggiungere nuova esperienza
-    setShowModal(true);
-  };
-
-  const handleEdit = (experience) => {
-    //  Modal per modificare esperienza esistente
-    setSelectedExperience(experience);
     setShowModal(true);
   };
 
@@ -51,7 +47,7 @@ function ProfileSections() {
           </Col>
           <Col xs="auto" className="d-flex gap-3">
             <FiPlus className="fs-4" style={{ cursor: "pointer" }} onClick={handleAdd} />
-            <SlPencil className="fs-5" />
+            <SlPencil className="fs-5" style={{ cursor: "pointer" }} onClick={() => navigate("/experiences")} />
           </Col>
         </Row>
 
@@ -85,13 +81,6 @@ function ProfileSections() {
                   </p>
 
                   <p className="mt-2">{exp.description}</p>
-
-                  <Button variant="outline-danger" size="sm" onClick={() => dispatch(deleteExperience(exp._id))}>
-                    Elimina
-                  </Button>
-                  <Button variant="outline-secondary" size="sm" className="ms-2" onClick={() => handleEdit(exp)}>
-                    Modifica
-                  </Button>
                 </div>
               ))
             )}
