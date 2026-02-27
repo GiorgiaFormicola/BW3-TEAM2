@@ -3,7 +3,7 @@ import { GET_PROFILE } from "../actions";
 const initialState = {
   URL: "https://striveschool-api.herokuapp.com/api/profile/me",
   token:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTljMjI0YzBiYzFkZTAwMTU3N2I3YTAiLCJpYXQiOjE3NzE4NDAwNzYsImV4cCI6MTc3MzA0OTY3Nn0.HWt5UOlv8ooOYdlCh1J5YaAzTQg8mdKEX4ogJdbuqJM",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OWExNWE2YzMzOWZkMTAwMTUwZTcwMzciLCJpYXQiOjE3NzIxODIxOTYsImV4cCI6MTc3MzM5MTc5Nn0.SRazvt_mvjnHKiBlK_bXj4RYsoSzfp3lC_d2qTVTmZ8",
   object: null,
 };
 
