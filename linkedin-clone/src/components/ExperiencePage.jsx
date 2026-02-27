@@ -124,6 +124,11 @@ function ExperiencesPage() {
               </div>
             </Col>
           </Row>
+          <Row>
+            <Col className="offset-1" xs={7}>
+              <MyFooter />
+            </Col>
+          </Row>
         </Container>
       </div>
       {/* MODAL */}
