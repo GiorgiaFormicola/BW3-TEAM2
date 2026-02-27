@@ -5,7 +5,7 @@ import { Col, Row, Container } from "react-bootstrap";
 function JobsPage() {
   return (
     <>
-      <Container>
+      <Container className="mb-4">
         <Row className="justify-content-center">
           <Col xs={3} className="mt-4">
             <Sidebar></Sidebar>

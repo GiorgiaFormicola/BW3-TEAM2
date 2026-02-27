@@ -8,9 +8,12 @@ const ProfileMainSection = () => {
   const [show, setShow] = useState(false);
   const [modal, setModal] = useState(null);
   const profileObject = useSelector((currentState) => currentState.profile.object);
+  const token = useSelector((currentState) => currentState.profile.token);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const data = new FormData();
 
   return (
     <>
@@ -227,7 +230,32 @@ const ProfileMainSection = () => {
                         >
                           Carica foto
                         </Form.Label>
-                        <Form.Control className="d-none" type="file" accept="image/*,.pdf" id="file-upload" />
+                        <Form.Control
+                          className="d-none"
+                          type="file"
+                          accept="image/*,.pdf"
+                          id="file-upload"
+                          onChange={(e) => {
+                            data.append("profile", e.target.files[0]);
+                            fetch(`https://striveschool-api.herokuapp.com/api/profile/${profileObject._id}/picture`, {
+                              method: "POST",
+                              body: data,
+                              headers: {
+                                Authorization: "Bearer " + token,
+                              },
+                            })
+                              .then((res) => {
+                                if (res.ok) {
+                                  console.log("File inviato");
+                                } else {
+                                  throw new Error("Errore");
+                                }
+                              })
+                              .catch((err) => {
+                                console.log(err);
+                              });
+                          }}
+                        />
                       </Form.Group>
                     </Form>
                   </div>

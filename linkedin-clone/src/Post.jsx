@@ -192,10 +192,12 @@ const Post = (props) => {
               </p>
             </div>
 
-            <div className="post-media">
-              <img src={`https://picsum.photos/seed/${props.post.text.split(" ")[0]}/500/500`} alt="Strada nel deserto" className="post-main-image" />
+            {props.post.image && (
+              <div className="post-media">
+                <img src={props.post.image} alt="Strada nel deserto" className="post-main-image" />
+                {/* <img src={`https://picsum.photos/seed/${props.post.text.split(" ")[0]}/500/500`} alt="Strada nel deserto" className="post-main-image" /> */}
 
-              {/* <div className="post-media-footer">
+                {/* <div className="post-media-footer">
           <h4>Puoi smettere di lavorare prima dei 67 anni?</h4>
           <p>121 invii</p>
 
@@ -203,7 +205,8 @@ const Post = (props) => {
             Scopri di più
           </button>
         </div> */}
-            </div>
+              </div>
+            )}
 
             <div className="post-stats align-items-center">
               <span className="post-reactions d-flex align-items-baseline gap-1">

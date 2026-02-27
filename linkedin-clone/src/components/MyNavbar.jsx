@@ -82,7 +82,7 @@ const MyNavbar = () => {
               />
             </InputGroup>
           </Form>
-          <Search size={22} className="d-lg-none" onClick={{}}></Search>
+          <Search size={22} className="d-md-none" onClick={{}}></Search>
           {/* <Form className="d-md-none mt-3 w-100">
             <InputGroup>
               <InputGroup.Text>
