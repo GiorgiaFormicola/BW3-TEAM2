@@ -69,6 +69,7 @@ export const fetchJobs = (category) => {
     }
   };
 };
+
 // FUNZIONE PER OTTENERE LISTA POST
 
 export const GET_POSTS = "GET_POSTS";
@@ -111,16 +112,6 @@ export const getPostsList = () => {
             }
           })
           .then((allComments) => {
-            //  allComments.forEach((comment) => {
-            //   postsList.forEach((post) => {
-            //     if(post._id === comment.elementId){
-            //       post = {
-
-            //       }
-
-            //     }
-            //   })
-            //  })
             const postsListWithComments = [];
             postsList.forEach((post) => {
               const postComments = allComments.filter((comment) => comment.elementId === post._id);
@@ -150,110 +141,3 @@ export const getPostsList = () => {
       });
   };
 };
-
-// list: [{
-//   comments:[]
-//   postObject
-// }]
-
-// export const GET_POST = "GET_POST";
-// export const STOP_LOADING = "STOP-LOADING";
-// export const getPostComments = (URL, key, post, dispatch) => {
-//   fetch(URL, {
-//     headers: {
-//       Authorization: key,
-//     },
-//   })
-//     .then((response) => {
-//       if (response.ok) {
-//         return response.json();
-//       } else {
-//         throw new Error("Error in getting the comments");
-//       }
-//     })
-//     .then((allComments) => {
-//       const postComments = allComments.filter((comment) => comment.elementId === post._id);
-//       dispatch({
-//         type: GET_POST,
-//         payload: {
-//           comments: postComments,
-//           object: post,
-//         },
-//       });
-//     })
-//     .catch((err) => {
-//       console.log("ERROR", err);
-//     });
-// };
-
-// export const getPostsList = () => {
-//   return (dispatch, getState) => {
-//     const URL = getState().posts.URL;
-//     const token = getState().profile.token;
-//     const commentsURL = getState().posts.commentsURL;
-//     const commentsKey = getState().posts.commentsKey;
-
-//     fetch(URL, {
-//       headers: {
-//         Authorization: "Bearer " + token,
-//       },
-//     })
-//       .then((res) => {
-//         if (res.ok) {
-//           return res.json();
-//         } else {
-//           throw new Error("Error in getting the post list");
-//         }
-//       })
-//       .then((postsArray) => {
-//         // console.log(data);
-//         // dispatch({
-//         //   type: GET_POSTS,
-//         //   payload: data,
-//         // });
-//         // const postsList = getState().posts.list
-//         postsArray
-//           .slice(-25)
-//           .reverse()
-//           .forEach((post) => {
-//             getPostComments(commentsURL, commentsKey, post, dispatch);
-//           });
-
-//         dispatch({
-//           type: STOP_LOADING,
-//           payload: false,
-//         });
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
-
-// const [commentsArray, setCommentsArray] = useState(null);
-
-// const getPostComments = () => {
-//   fetch(commentsURL, {
-//     headers: {
-//       Authorization: key,
-//     },
-//   })
-//     .then((response) => {
-//       if (response.ok) {
-//         return response.json();
-//       } else {
-//         throw new Error("Error in getting the post comments");
-//       }
-//     })
-//     .then((allComments) => {
-//       const postComments = allComments.filter((comment) => comment.elementId === props.post._id);
-//       setCommentsArray(postComments);
-//     })
-//     .catch((err) => {
-//       console.log("ERROR", err);
-//     });
-// };
-
-// useEffect(() => {
-//   getPostComments();
-// }, []);

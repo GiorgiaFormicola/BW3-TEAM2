@@ -1,8 +1,9 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import { Button, Toast } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { getPostsList } from "../redux/actions";
 
 const URL = "https://striveschool-api.herokuapp.com/api/comments/";
 const key =
@@ -13,6 +14,8 @@ const SingleComment = function (props) {
   const [showToast, setShowToast] = useState(false);
   const toggleShowToast = () => setShowToast(!showToast);
 
+  const dispatch = useDispatch();
+
   const removeComment = function () {
     fetch(URL + props.commentID, {
       method: "DELETE",
@@ -22,8 +25,8 @@ const SingleComment = function (props) {
     })
       .then((response) => {
         if (response.ok) {
-          alert("Comment successfully deleted!");
-          // props.getComments();
+          console.log("Comment successfully deleted!");
+          dispatch(getPostsList());
         } else {
           throw new Error("Error in deleting the selected comment");
         }
@@ -32,28 +35,6 @@ const SingleComment = function (props) {
         console.log("ERROR", err);
       });
   };
-
-  //  const modifyComment = (modifiedComment) => {
-  //     fetch(URL + props.commentID, {
-  //       method: "PUT",
-  //       body: JSON.stringify(post),
-  //       headers: {
-  //         Authorization: key,
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //       .then((res) => {
-  //         if (res.ok) {
-  //           console.log("Comment modified");
-
-  //         } else {
-  //           throw new Error("Error in modifying the comment");
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
 
   return (
     <>
