@@ -97,21 +97,21 @@ const MyNavbar = () => {
         </Nav>
 
         <Nav className="gap-2 gap-md-4 align-items-center border-end pe-3 pe-lg-4">
-          <Link to="/" className="d-flex flex-column align-items-center text-decoration-none text-dark">
+          <Link to="/" className="d-flex flex-column align-items-center text-decoration-none text-dark nav-link">
             <House size={22} className="nav-icon" />
             <small className="d-none d-lg-inline text-nowrap" style={{ fontSize: "0.7em" }}>
               Home
             </small>
           </Link>
 
-          <Link to="#" className="d-flex flex-column align-items-center text-decoration-none text-dark">
+          <Link to="#" className="d-flex flex-column align-items-center text-decoration-none text-dark nav-link">
             <People size={22} className="nav-icon" />
             <small className="d-none d-lg-inline" style={{ fontSize: "0.7em" }}>
               Rete
             </small>
           </Link>
 
-          <Link to="/jobs" className="position-relative d-flex flex-column align-items-center text-decoration-none text-dark">
+          <Link to="/jobs" className="position-relative d-flex flex-column align-items-center text-decoration-none text-dark nav-link">
             <Briefcase size={22} className="nav-icon" />
             <Badge bg="danger" pill className="position-absolute start-50" style={{ fontSize: "0.6em", top: "0.3em" }}>
               2
@@ -121,7 +121,7 @@ const MyNavbar = () => {
             </small>
           </Link>
 
-          <Link to="#" className="position-relative d-flex flex-column align-items-center text-decoration-none text-dark">
+          <Link to="#" className="position-relative d-flex flex-column align-items-center text-decoration-none text-dark nav-link">
             <ChatDots size={22} className="nav-icon" />
             <Badge bg="danger" pill className="position-absolute start-50" style={{ fontSize: "0.6em", top: "0.3em" }}>
               6
@@ -131,7 +131,7 @@ const MyNavbar = () => {
             </small>
           </Link>
 
-          <Link to="#" className="position-relative d-flex flex-column align-items-center text-decoration-none text-dark">
+          <Link to="#" className="position-relative d-flex flex-column align-items-center text-decoration-none text-dark nav-link">
             <Bell size={22} className="nav-icon" />
             <Badge bg="danger" pill className="position-absolute start-50 " style={{ fontSize: "0.6em", top: "0.3em" }}>
               3

@@ -13,7 +13,7 @@ const JobsSection = () => {
   }, [category, dispatch]);
 
   return (
-    <Container className="mt-4">
+    <Container fluid className="mt-4">
       {loading && <p>Loading...</p>}
       {error && <p className="text-danger">{error}</p>}
 

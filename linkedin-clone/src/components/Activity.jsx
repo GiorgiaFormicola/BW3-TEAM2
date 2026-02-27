@@ -2,7 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { SlPencil } from "react-icons/sl";
 function Activity() {
   return (
-    <Container fluid className="bg-light rounded-3 border p-0 my-3 lh-sm">
+    <Container fluid className="bg-white rounded-3 border p-0 my-3 lh-sm">
       <Row className="px-3 pt-3 align-items-start">
         <Col>
           <p className="fs-5 fw-bold mb-1">Attività</p>

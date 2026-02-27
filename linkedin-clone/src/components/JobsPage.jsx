@@ -5,12 +5,12 @@ import { Col, Row, Container } from "react-bootstrap";
 function JobsPage() {
   return (
     <>
-      <Container className="mb-4">
+      <Container fluid="md" className="mb-4">
         <Row className="justify-content-center">
-          <Col xs={3} className="mt-4">
+          <Col lg={3} md={4} xs={12} className="mt-4">
             <Sidebar></Sidebar>
           </Col>
-          <Col xs={7} className="mt-4">
+          <Col xs={12} lg={6} md={8} className="mt-4">
             <JobsSection></JobsSection>
           </Col>
         </Row>

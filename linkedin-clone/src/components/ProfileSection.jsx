@@ -40,7 +40,7 @@ function ProfileSections() {
 
   return (
     <>
-      <Container fluid className="bg-light rounded-3 border p-0 my-3">
+      <Container fluid className="bg-white rounded-3 border p-0 my-3">
         <Row className="px-3 pt-3 align-items-start">
           <Col>
             <p className="fs-5 fw-bold mb-0">Esperienza</p>

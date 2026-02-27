@@ -5,7 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import { IoEye } from "react-icons/io5";
 function Analisi() {
   return (
-    <Container fluid className="bg-light rounded-3 border p-0">
+    <Container fluid className="bg-white rounded-3 border p-0">
       <div className="px-3 pt-3">
         <p className="fs-5 fw-bold mb-1">Attività</p>
         <p className="fs-9 mb-0">

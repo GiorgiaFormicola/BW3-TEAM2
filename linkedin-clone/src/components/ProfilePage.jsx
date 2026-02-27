@@ -14,9 +14,16 @@ const ProfilePage = () => {
           <Col xs={12} md={7} lg={8}>
             <Row>
               <ProfileMainSection></ProfileMainSection>
-              <Activity></Activity>
-              <Analisi></Analisi>
-              <ProfileSections></ProfileSections>
+              <Col xs={12}>
+                <Activity></Activity>
+              </Col>
+              <Col xs={12}>
+                <Analisi></Analisi>
+              </Col>
+              <Col xs={12}>
+                <ProfileSections></ProfileSections>
+              </Col>
+
               <Col xs={12} md={7} lg={8}>
                 <MyFooter></MyFooter>
               </Col>
