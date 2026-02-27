@@ -6,7 +6,7 @@ const CommentList = function (props) {
   return (
     <>
       {props.comments.length !== 0 && (
-        <ListGroup variant="flush" className="mt-2">
+        <ListGroup variant="flush" className="mt-1 mb-0">
           {props.comments.reverse().map((comment) => {
             return (
               <SingleComment

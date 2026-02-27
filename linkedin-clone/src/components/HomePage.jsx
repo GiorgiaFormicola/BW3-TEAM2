@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPostsList } from "../redux/actions";
 import MyFooter from "./MyFooter";
+import HomepageAside from "./HomepageAside";
 
 const HomePage = () => {
   const postsList = useSelector((currentState) => currentState.posts.list);
@@ -40,12 +41,12 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Container fluid="md mt-4">
+    <Container fluid="md" className="mt-4 px-0 px-xl-2 ">
       <Row className="justify-content-center">
         <Col xs={12} md={4} lg={3} className="col-xxl-2 ">
           <Sidebar></Sidebar>
         </Col>
-        <Col xs={12} md={8} lg={5} className="">
+        <Col xs={12} md={8} lg={5} xl={6}>
           <CreatePost></CreatePost>
           {postsList &&
             postsList
@@ -53,7 +54,8 @@ const HomePage = () => {
               .reverse()
               .map((post) => <Post key={post._id} post={post}></Post>)}
         </Col>
-        <Col md={8} lg={4} className="offset-md-4 offset-lg-0 col-xxl-3 min-vh-100">
+        <Col md={8} lg={4} xl={3} className="offset-md-4 offset-lg-0 col-xxl-3 flex-grow-1">
+          <HomepageAside></HomepageAside>
           <MyFooter />
         </Col>
       </Row>

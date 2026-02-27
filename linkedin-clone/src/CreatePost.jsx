@@ -44,36 +44,40 @@ function CreatePost() {
     <>
       {profile.object && (
         <>
-          <div className="createpost-container">
-            <div className="createpost-card">
-              <div className="createpost-top">
+          <div className="createpost-container mx-0" style={{ width: "100%" }}>
+            <div className="createpost-card pb-2 pt-3 pt-md-2 py-lg-1">
+              <div className="createpost-top pt-md-2">
                 <img src={profile.object.image} alt="Profilo" className="createpost-profile-pic" />
 
-                <button className="createpost-input-btn" id="createpost-start-btn" onClick={handleShow}>
+                <button
+                  className="createpost-input-btn fs-6 py-2 py-md-1 lh-lg fw-bold text-black text-opacity-75"
+                  id="createpost-start-btn"
+                  onClick={handleShow}
+                >
                   Crea un post
                 </button>
               </div>
 
-              <div className="createpost-actions">
-                <button className="createpost-action-btn" id="createpost-video-btn">
-                  <span>▶️</span> Video
+              <div className="createpost-actions mt-2 pt-1 mt-md-1 mt-lg-0">
+                <button className="createpost-action-btn gap-2 fw-semibold text-secondary-emphasis" id="createpost-video-btn">
+                  <i className="bi bi-youtube fs-3" style={{ color: "#44712E" }}></i> Video
                 </button>
-                <button className="createpost-action-btn" id="createpost-photo-btn">
-                  <span>🖼️</span> Foto
+                <button className="createpost-action-btn gap-2 fw-semibold text-secondary-emphasis" id="createpost-photo-btn">
+                  <i className="bi bi-image fs-5" style={{ color: "#0A66C2" }}></i> Foto
                 </button>
-                <button className="createpost-action-btn" id="createpost-article-btn">
-                  <span>📰</span> Scrivi un articolo
+                <button className="createpost-action-btn gap-2 fw-semibold text-secondary-emphasis" id="createpost-article-btn">
+                  <i className="bi bi-text-indent-left fs-2" style={{ color: "#B24020" }}></i> Scrivi un articolo
                 </button>
               </div>
             </div>
 
-            <div className="createpost-sort-container">
+            <div className="createpost-sort-container my-1">
               <hr className="createpost-divider" />
               <span className="createpost-sort-text">
                 Seleziona la visualizzazione del feed:{" "}
-                <span className="createpost-sort-anchor" id="createpost-sort-dropdown-anchor">
-                  Più rilevanti per primi ▼
-                </span>
+                {/* <span className="createpost-sort-anchor text-black text-opacity-50" id="createpost-sort-dropdown-anchor"> */}
+                <span className="fw-medium">più rilevanti per primi ▼</span>
+                {/* </span> */}
               </span>
             </div>
           </div>

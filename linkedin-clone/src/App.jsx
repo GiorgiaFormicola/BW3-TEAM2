@@ -4,13 +4,10 @@ import "./App.css";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import ProfilePage from "./components/ProfilePage";
-import MyFooter from "./components/MyFooter";
 import MyNavbar from "./components/MyNavbar";
 import HomePage from "./components/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import JobsPage from "./components/JobsPage";
 import ExperiencesPage from "./components/ExperiencePage";
-import JobsSection from "./components/JobsSection";
 import JobsPage from "./components/JobsPage";
 function App() {
   return (

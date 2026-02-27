@@ -1,10 +1,10 @@
 /* Contenitore principale */
-.createpost-container {
+/* .createpost-container {
   width: 100%;
   max-width: 540px;
   margin: 0 auto 16px auto;
   font-family: Arial, sans-serif;
-}
+} */
 
 /* La card bianca */
 .createpost-card {
@@ -36,7 +36,7 @@
   border-radius: 30px;
   padding: 14px 16px;
   text-align: left;
-  font-size: 14px;
+  /* font-size: 14px; */
   color: #00000099;
   font-weight: 600;
   cursor: pointer;
@@ -51,19 +51,19 @@
 .createpost-actions {
   display: flex;
   justify-content: space-around;
-  margin-top: 8px;
+  /* margin-top: 8px; */
 }
 
 .createpost-action-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  /* gap: 8px; */
   background: transparent;
   border: none;
-  padding: 12px 8px;
-  font-size: 14px;
-  color: #00000099;
-  font-weight: 600;
+  /* padding: 12px 8px; */
+  /* font-size: 14px; */
+  /* color: #00000099; */
+  /* font-weight: 600; */
   cursor: pointer;
   border-radius: 4px;
 }

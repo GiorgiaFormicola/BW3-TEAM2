@@ -1,6 +1,6 @@
 /* Contenitore principale */
 .post-container {
-  max-width: 540px;
+  /* max-width: 540px; */
   width: 100%;
   background-color: white;
   border: 1px solid #e0e0e0;
@@ -112,7 +112,7 @@
 }
 
 .post-divider {
-  border-top: 1px solid #e0e0e0;
+  /* border-top: 1px solid #e0e0e0; */
   border-bottom: none;
   margin: 0 16px;
 }

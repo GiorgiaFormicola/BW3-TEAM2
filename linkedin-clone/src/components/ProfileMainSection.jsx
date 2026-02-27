@@ -58,12 +58,12 @@ const ProfileMainSection = () => {
                       <span>Aggiungi badge di verifica</span>
                     </Button>
                   </Card.Text>
-                  <div className="align-items-center d-none d-lg-flex gap-2">
+                  {/* <div className="align-items-center d-none d-lg-flex gap-2">
                     <img src="https://placecats.com/30/30" alt="" />
                     <a href="" className="fs-7 text-decoration-none text-black fw-semibold text-nowrap">
                       Sapienza Università di Roma
                     </a>
-                  </div>
+                  </div> */}
                 </div>
 
                 <Card.Text className="mb-2">{profileObject.title}</Card.Text>
@@ -100,7 +100,7 @@ const ProfileMainSection = () => {
                   <p className="fw-semibold mb-0 d-flex align-items-center justify-content-between">
                     Disponibile a lavorare <i className="bi bi-pencil"></i>
                   </p>
-                  <p className="mb-0 text-truncate ">Lorem ipsum xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                  <p className="mb-0 text-truncate ">{profileObject.bio}</p>
                   <p className="fw-semibold blu-linkedin-text mb-0 mt-1" id="show-details">
                     Mostra dettagli
                   </p>

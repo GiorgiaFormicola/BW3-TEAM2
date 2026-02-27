@@ -53,7 +53,7 @@ const AddComment = function (props) {
 
   return (
     <>
-      <div className="createpost-top px-3 py-2">
+      <div className="createpost-top px-3 pb-2 pt-md-1 ">
         <img src={profile.object.image} alt="Profilo" className="createpost-profile-pic" style={{ height: "2em", width: "2em" }} />
         <Form
           className="flex-grow-1"

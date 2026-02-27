@@ -1,4 +1,4 @@
-import { Card, Button, Image } from "react-bootstrap";
+import { Card, Button, Image, ListGroup } from "react-bootstrap";
 import { useState } from "react";
 import { InfoSquareFill, ChevronDown, ChevronUp, ChevronRight, EyeFill, PersonPlusFill } from "react-bootstrap-icons";
 import "../assets/Aside.css";
@@ -32,22 +32,35 @@ const HomepageAside = () => {
       {/* SEZIONE NOTIZIE */}
 
       <Card className="aside-card mb-2 p-3 border-1 rounded-3">
-        <div className="d-flex justify-content-between align-items-center mb-2">
-          <h6 className="aside-section-title mb-0 fw-bold" style={{ fontSize: "1rem" }}>
-            LinkedIn Notizie
-          </h6>
-          <InfoSquareFill size={14} className="text-muted cursor-pointer" />
+        <div className="d-flex justify-content-between align-items-baseline mb-2">
+          <h6 className="aside-section-title mb-0 fw-semibold fs-5">LinkedIn Notizie</h6>
+          <InfoSquareFill size={12} className="text-muted cursor-pointer" />
         </div>
 
-        <ul className="list-unstyled mb-0">
+        <p className="mb-2 text-muted fw-semibold">Storie principali</p>
+        <ListGroup variant="flush" className="border-0">
           {visibleNews.map((news) => (
-            <li key={news.id} className="news-item mb-2">
+            <ListGroup.Item key={news.id} className="mb-2 p-0 border-0 text-truncate">
+              <div className="d-flex align-items-start">
+                {/* <span className="news-dot me-2">•</span> */}
+                <div className="d-flex flex-column lh-sm">
+                  <span className="text-truncate fs-7 fw-semibold">{news.title}</span>
+                  <span className="news-time">
+                    {news.time} • {news.readers}
+                  </span>
+                </div>
+              </div>
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+
+        {/* <ul className="mb-0 list-unstyled">
+          {visibleNews.map((news) => (
+            <li key={news.id} className="news-item mb-2 list-group-item">
               <div className="d-flex align-items-start">
                 <span className="news-dot me-2">•</span>
                 <div>
-                  <span className="news-title text-truncate d-block" style={{ maxWidth: "250px" }}>
-                    {news.title}
-                  </span>
+                  <span className="news-title text-truncate">{news.title}</span>
                   <span className="news-time">
                     {news.time} • {news.readers}
                   </span>
@@ -55,16 +68,16 @@ const HomepageAside = () => {
               </div>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
-        <button className="btn-show-more d-flex align-items-center mt-1" onClick={() => setShowAllNews(!showAllNews)}>
+        <button className="btn-show-more d-flex align-items-center px-0" onClick={() => setShowAllNews(!showAllNews)}>
           {showAllNews ? (
             <>
               Meno dettagli <ChevronUp className="ms-1" />
             </>
           ) : (
             <>
-              Vedi altro <ChevronDown className="ms-1" />
+              Visualizza altro <ChevronDown className="ms-1" />
             </>
           )}
         </button>
@@ -73,14 +86,14 @@ const HomepageAside = () => {
       {/* Snake AD */}
 
       <Card className="aside-card mb-2 p-3 border-1 rounded-3">
-        <div className="mb-3">
+        <div className="mb-2">
           <h6 className="aside-section-title mb-0 fw-bold" style={{ fontSize: "0.9rem" }}>
             Rompicapo di LinkedIn in evidenza
           </h6>
         </div>
 
         <div className="puzzle-card d-flex align-items-start justify-content-between p-2 rounded">
-          <div className="d-flex align-items-start">
+          <div className="d-flex align-items-center">
             <div className="puzzle-icon-container me-3" style={{ width: "52px", height: "52px" }}>
               <Image src={snakeAsset} className="puzzle-icon-img" style={{ width: "80px" }} />
             </div>
