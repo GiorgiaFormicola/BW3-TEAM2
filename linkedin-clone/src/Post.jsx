@@ -71,33 +71,33 @@ const Post = (props) => {
   const handleShow = () => setShowModal(true);
 
   // FUNZIONE PER OTTENERE COMMENTI DEL POST
-  const [commentsArray, setCommentsArray] = useState(null);
+  // const [commentsArray, setCommentsArray] = useState(null);
 
-  const getPostComments = () => {
-    fetch(commentsURL, {
-      headers: {
-        Authorization: key,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Error in getting the post comments");
-        }
-      })
-      .then((allComments) => {
-        const postComments = allComments.filter((comment) => comment.elementId === props.post._id);
-        setCommentsArray(postComments);
-      })
-      .catch((err) => {
-        console.log("ERROR", err);
-      });
-  };
+  // const getPostComments = () => {
+  //   fetch(commentsURL, {
+  //     headers: {
+  //       Authorization: key,
+  //     },
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       } else {
+  //         throw new Error("Error in getting the post comments");
+  //       }
+  //     })
+  //     .then((allComments) => {
+  //       const postComments = allComments.filter((comment) => comment.elementId === props.post._id);
+  //       setCommentsArray(postComments);
+  //     })
+  //     .catch((err) => {
+  //       console.log("ERROR", err);
+  //     });
+  // };
 
-  useEffect(() => {
-    getPostComments();
-  }, []);
+  // useEffect(() => {
+  //   getPostComments();
+  // }, []);
   // FUNZIONE PER OTTENERE COMMENTI DEL POST
 
   // FUNZIONE PER LIKE RANDOM
@@ -218,12 +218,12 @@ const Post = (props) => {
               </span>
 
               <span className="post-comments">
-                {commentsArray && (
+                {props.post.comments && (
                   <>
-                    {commentsArray.length !== 0 && (
+                    {props.post.comments.length !== 0 && (
                       <>
                         {" "}
-                        {commentsArray.length === 1 && "1 commento"} {commentsArray.length !== 1 && `${commentsArray.length} commenti`}
+                        {props.post.comments.length === 1 && "1 commento"} {props.post.comments.length !== 1 && `${props.post.comments.length} commenti`}
                       </>
                     )}
                   </>
@@ -248,7 +248,7 @@ const Post = (props) => {
               </button>
             </div>
             <AddComment postID={props.post._id}></AddComment>
-            {commentsArray && <CommentList comments={commentsArray}></CommentList>}
+            {props.post.comments && <CommentList comments={props.post.comments}></CommentList>}
 
             {/* <CommentArea postID={props.post._id} comments=></CommentArea> */}
           </div>

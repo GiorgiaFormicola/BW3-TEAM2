@@ -2,13 +2,15 @@ import { Col, Card, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import "../assets/ProfileMainSection.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getMyProfileInfo } from "../redux/actions";
 
 const ProfileMainSection = () => {
   const [show, setShow] = useState(false);
   const [modal, setModal] = useState(null);
   const profileObject = useSelector((currentState) => currentState.profile.object);
   const token = useSelector((currentState) => currentState.profile.token);
+  const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -247,6 +249,8 @@ const ProfileMainSection = () => {
                               .then((res) => {
                                 if (res.ok) {
                                   console.log("File inviato");
+                                  dispatch(getMyProfileInfo());
+                                  handleClose();
                                 } else {
                                   throw new Error("Errore");
                                 }

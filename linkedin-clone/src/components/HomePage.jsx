@@ -48,11 +48,13 @@ const HomePage = () => {
         </Col>
         <Col xs={12} md={8} lg={5} xl={6}>
           <CreatePost></CreatePost>
-          {postsList &&
-            postsList
-              .slice(-50)
-              .reverse()
-              .map((post) => <Post key={post._id} post={post}></Post>)}
+
+          {postsList
+            // .slice(-50)
+            // .reverse()
+            .map((post) => (
+              <Post key={post._id} post={post}></Post>
+            ))}
         </Col>
         <Col md={8} lg={4} xl={3} className="offset-md-4 offset-lg-0 col-xxl-3 flex-grow-1">
           <HomepageAside></HomepageAside>

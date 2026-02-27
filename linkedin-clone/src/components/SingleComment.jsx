@@ -59,7 +59,18 @@ const SingleComment = function (props) {
     <>
       <ListGroup.Item className="d-flex justify-content-between px-0 align-items-baseline border-0 py-0">
         <div className="post-header align-items-start position-relative flex-grow-1">
-          <img src={profileObject.image} alt="Profilo Azienda" className="post-profile-pic object-fit-cover" style={{ height: "2em", width: "2em" }} />
+          {props.author === profileObject.email && (
+            <img src={profileObject.image} alt="Profilo Azienda" className="post-profile-pic object-fit-cover" style={{ height: "2em", width: "2em" }} />
+          )}
+          {props.author !== profileObject.email && (
+            <img
+              src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg?semt=ais_user_personalization&w=740&q=80"
+              alt="Profilo Azienda"
+              className="post-profile-pic object-fit-cover"
+              style={{ height: "2em", width: "2em" }}
+            />
+          )}
+
           <div className="post-header-info">
             <h3>{props.author}</h3>
             <p className="post-time">
