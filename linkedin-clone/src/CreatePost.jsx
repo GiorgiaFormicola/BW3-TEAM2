@@ -2,7 +2,7 @@ import { Modal, Button, Form, ModalBody } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./CreatePost.css";
-import { GET_POSTS, getPostsList } from "./redux/actions";
+import { getPostsList } from "./redux/actions";
 
 function CreatePost() {
   const token = useSelector((currentState) => currentState.profile.token);
