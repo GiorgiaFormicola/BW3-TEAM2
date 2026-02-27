@@ -18,13 +18,16 @@ import {
 import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../redux/actions/index.js";
+import JobsPage from "./JobsPage";
+import { Link } from "react-router-dom";
 //import { useSelector } from "react-redux";
 // PER OTTENERE PROFILO UTENTE
-
+import { useNavigate } from "react-router-dom";
 import { getMyProfileInfo } from "../redux/actions";
 // PER OTTENERE PROFILO UTENTE
 
 const MyNavbar = () => {
+  const navigate = useNavigate();
   const profileObject = useSelector((currentState) => currentState.profile.object);
   const [inputValue, setInputValue] = useState("");
   const handleSubmit = (e) => {
@@ -61,8 +64,8 @@ const MyNavbar = () => {
     };
   }, []);
   return (
-    <Navbar className="bg-light shadow-sm py-0 ">
-      <Container fluid className="px-0">
+    <Navbar className="bg-light shadow-sm py-0 justify-content-center">
+      <Container fluid="md" className="px-0 px-md-5">
         <Navbar.Brand href={null} className="ps-3 py-2 me-lg-2">
           <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="logo" width="34" />
         </Navbar.Brand>
@@ -94,21 +97,21 @@ const MyNavbar = () => {
         </Nav>
 
         <Nav className="gap-2 gap-md-4 align-items-center border-end pe-3 pe-lg-4">
-          <Nav.Link href="#" className="d-flex flex-column align-items-center">
+          <Link to="/" className="d-flex flex-column align-items-center text-decoration-none text-dark">
             <House size={22} className="nav-icon" />
             <small className="d-none d-lg-inline text-nowrap" style={{ fontSize: "0.7em" }}>
               Home
             </small>
-          </Nav.Link>
+          </Link>
 
-          <Nav.Link href="#" className="d-flex flex-column align-items-center">
+          <Link to="#" className="d-flex flex-column align-items-center text-decoration-none text-dark">
             <People size={22} className="nav-icon" />
             <small className="d-none d-lg-inline" style={{ fontSize: "0.7em" }}>
               Rete
             </small>
-          </Nav.Link>
+          </Link>
 
-          <Nav.Link href="#" className="position-relative d-flex flex-column align-items-center">
+          <Link to="/jobs" className="position-relative d-flex flex-column align-items-center text-decoration-none text-dark">
             <Briefcase size={22} className="nav-icon" />
             <Badge bg="danger" pill className="position-absolute start-50" style={{ fontSize: "0.6em", top: "0.3em" }}>
               2
@@ -116,9 +119,9 @@ const MyNavbar = () => {
             <small className="d-none d-lg-inline" style={{ fontSize: "0.7em" }}>
               Lavoro
             </small>
-          </Nav.Link>
+          </Link>
 
-          <Nav.Link href="#" className="position-relative d-flex flex-column align-items-center">
+          <Link to="#" className="position-relative d-flex flex-column align-items-center text-decoration-none text-dark">
             <ChatDots size={22} className="nav-icon" />
             <Badge bg="danger" pill className="position-absolute start-50" style={{ fontSize: "0.6em", top: "0.3em" }}>
               6
@@ -126,9 +129,9 @@ const MyNavbar = () => {
             <small className="d-none d-lg-inline" style={{ fontSize: "0.7em" }}>
               Messaggistica
             </small>
-          </Nav.Link>
+          </Link>
 
-          <Nav.Link href="#" className="position-relative d-flex flex-column align-items-center">
+          <Link to="#" className="position-relative d-flex flex-column align-items-center text-decoration-none text-dark">
             <Bell size={22} className="nav-icon" />
             <Badge bg="danger" pill className="position-absolute start-50 " style={{ fontSize: "0.6em", top: "0.3em" }}>
               3
@@ -136,7 +139,7 @@ const MyNavbar = () => {
             <small className="d-none d-lg-inline" style={{ fontSize: "0.7em" }}>
               Notifiche
             </small>
-          </Nav.Link>
+          </Link>
 
           <div
             ref={menuRef}
@@ -183,7 +186,9 @@ const MyNavbar = () => {
                   </div>
                 )}
                 <div className="d-flex gap-2 mb-2 px-3">
-                  <button className="btn btn-outline-primary rounded-pill p-0 w-50">Visualizza profilo</button>
+                  <button onClick={() => navigate("/profile")} className="btn btn-outline-primary rounded-pill p-0 w-50">
+                    Visualizza profilo
+                  </button>
                   <button className="btn btn-primary rounded-pill p-0 w-50">Verifica ora</button>
                 </div>
                 <hr className="my-1" />

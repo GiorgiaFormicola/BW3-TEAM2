@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import "./Sidebar.css";
 import { Card } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 function Sidebar() {
   const profile = useSelector((currentState) => currentState.profile.object);
   return (
@@ -32,27 +32,29 @@ function Sidebar() {
           </div> */}
 
       {profile && (
-        <Card className="rounded-3 mb-2" id="profile-card">
-          <Card.Img variant="top" src={`https://picsum.photos/id/2/300/70`} />
+        <Link to="/profile" className="text-decoration-none ">
+          <Card className="rounded-3 mb-2" id="profile-card">
+            <Card.Img variant="top" src={`https://picsum.photos/id/2/300/70`} />
 
-          <Card.Body className="px-3 position-relative pt-5 lh-sm">
-            <div style={{ cursor: "pointer", top: "-1.5em" }} className=" position-absolute">
-              <div className="rounded-circle overflow-hidden">
-                <img src={profile.image} alt="" style={{ height: "4.5em", width: "4.5em" }} />
+            <Card.Body className="px-3 position-relative pt-5 lh-sm">
+              <div style={{ cursor: "pointer", top: "-1.5em" }} className=" position-absolute">
+                <div className="rounded-circle overflow-hidden">
+                  <img src={profile.image} alt="" style={{ height: "4.5em", width: "4.5em" }} />
+                </div>
               </div>
-            </div>
 
-            <Card.Text className="fs-5 fw-semibold mb-0 d-flex gap-1 flex-wrap pt-2 pt-lg-0 pt-xl-2">
-              <span>
-                {profile.name} {profile.surname}
-              </span>
-            </Card.Text>
+              <Card.Text className="fs-5 fw-semibold mb-0 d-flex gap-1 flex-wrap pt-2 pt-lg-0 pt-xl-2">
+                <span>
+                  {profile.name} {profile.surname}
+                </span>
+              </Card.Text>
 
-            <Card.Text className="mb-1 fs-7">{profile.title}</Card.Text>
+              <Card.Text className="mb-1 fs-7">{profile.title}</Card.Text>
 
-            <Card.Text className="fs-7 text-muted mb-1">{profile.area}</Card.Text>
-          </Card.Body>
-        </Card>
+              <Card.Text className="fs-7 text-muted mb-1">{profile.area}</Card.Text>
+            </Card.Body>
+          </Card>
+        </Link>
       )}
 
       {/* SCHEDA 2: Collegamenti */}
