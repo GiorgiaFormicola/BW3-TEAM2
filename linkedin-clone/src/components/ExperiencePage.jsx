@@ -8,6 +8,8 @@ import AddExperienceForm from "./AddExperienceForm";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import imgAssets from "../assets/img/Ads.png";
+import imgAssetsIren from "../assets/img/iren.png";
+import MyFooter from "./MyFooter.jsx";
 
 function ExperiencesPage() {
   const dispatch = useDispatch();
@@ -113,6 +115,11 @@ function ExperiencesPage() {
               <div className="sidebar-placeholder">
                 <Card className="aside-card mb-2 overflow-hidden border-0">
                   <Image src={imgAssets} alt="Promozione" fluid />
+                </Card>
+              </div>
+              <div className="sidebar-placeholder">
+                <Card className="aside-card mb-2 overflow-hidden border-0">
+                  <Image src={imgAssetsIren} alt="Promozione" fluid />
                 </Card>
               </div>
             </Col>
