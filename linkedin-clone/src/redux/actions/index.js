@@ -69,6 +69,7 @@ export const fetchJobs = (category) => {
     }
   };
 };
+
 // FUNZIONE PER OTTENERE LISTA POST
 
 export const GET_POSTS = "GET_POSTS";
@@ -77,6 +78,12 @@ export const getPostsList = () => {
   return (dispatch, getState) => {
     const URL = getState().posts.URL;
     const token = getState().profile.token;
+    const commentsURL = getState().posts.commentsURL;
+    const commentsKey = getState().posts.commentsKey;
+
+    dispatch({
+      type: "RESET_POSTS_LIST",
+    });
 
     fetch(URL, {
       headers: {
@@ -91,12 +98,44 @@ export const getPostsList = () => {
         }
       })
       .then((data) => {
-        // console.log(data);
-        dispatch({
-          type: GET_POSTS,
-          payload: data,
-        });
+        const postsList = data.slice(-50).reverse();
+        fetch(commentsURL, {
+          headers: {
+            Authorization: commentsKey,
+          },
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("Error in getting the post comments");
+            }
+          })
+          .then((allComments) => {
+            const postsListWithComments = [];
+            postsList.forEach((post) => {
+              const postComments = allComments.filter((comment) => comment.elementId === post._id);
+              postsListWithComments.push({
+                ...post,
+                comments: postComments,
+              });
+            });
+            dispatch({
+              type: "GET_POST_LIST",
+              payload: postsListWithComments,
+            });
+            dispatch({
+              type: "STOP_LOADING",
+            });
+
+            // setCommentsArray(allComments);
+          })
+
+          .catch((err) => {
+            console.log("ERROR", err);
+          });
       })
+
       .catch((err) => {
         console.log(err);
       });

@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostsList } from "../redux/actions";
 
 const URL = "https://striveschool-api.herokuapp.com/api/comments/";
 const key =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTczM2Q1ODg1ZTNiMTAwMTViNWVkOTIiLCJpYXQiOjE3NzIxMDg3NDIsImV4cCI6MTc3MzMxODM0Mn0.49cRPY-_O-5kIvY7cftMLKypx68yUSC1-5UBtRyQDl4";
 
 const AddComment = function (props) {
+  const dispatch = useDispatch();
   const profile = useSelector((currentState) => currentState.profile);
   const [newComment, setNewComment] = useState({
     comment: "",
@@ -41,6 +43,7 @@ const AddComment = function (props) {
             rate: "1",
             elementId: props.postID,
           });
+          dispatch(getPostsList());
           // props.getPostComments();
         } else {
           throw new Error("Error in adding your comment");

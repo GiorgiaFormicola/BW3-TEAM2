@@ -1,8 +1,9 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import { Button, Toast } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { getPostsList } from "../redux/actions";
 
 const URL = "https://striveschool-api.herokuapp.com/api/comments/";
 const key =
@@ -13,6 +14,8 @@ const SingleComment = function (props) {
   const [showToast, setShowToast] = useState(false);
   const toggleShowToast = () => setShowToast(!showToast);
 
+  const dispatch = useDispatch();
+
   const removeComment = function () {
     fetch(URL + props.commentID, {
       method: "DELETE",
@@ -22,8 +25,8 @@ const SingleComment = function (props) {
     })
       .then((response) => {
         if (response.ok) {
-          alert("Comment successfully deleted!");
-          // props.getComments();
+          console.log("Comment successfully deleted!");
+          dispatch(getPostsList());
         } else {
           throw new Error("Error in deleting the selected comment");
         }
@@ -33,33 +36,22 @@ const SingleComment = function (props) {
       });
   };
 
-  //  const modifyComment = (modifiedComment) => {
-  //     fetch(URL + props.commentID, {
-  //       method: "PUT",
-  //       body: JSON.stringify(post),
-  //       headers: {
-  //         Authorization: key,
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //       .then((res) => {
-  //         if (res.ok) {
-  //           console.log("Comment modified");
-
-  //         } else {
-  //           throw new Error("Error in modifying the comment");
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
-
   return (
     <>
       <ListGroup.Item className="d-flex justify-content-between px-0 align-items-baseline border-0 py-0">
         <div className="post-header align-items-start position-relative flex-grow-1">
-          <img src={profileObject.image} alt="Profilo Azienda" className="post-profile-pic object-fit-cover" style={{ height: "2em", width: "2em" }} />
+          {props.author === profileObject.email && (
+            <img src={profileObject.image} alt="Profilo Azienda" className="post-profile-pic object-fit-cover" style={{ height: "2em", width: "2em" }} />
+          )}
+          {props.author !== profileObject.email && (
+            <img
+              src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg?semt=ais_user_personalization&w=740&q=80"
+              alt="Profilo Azienda"
+              className="post-profile-pic object-fit-cover"
+              style={{ height: "2em", width: "2em" }}
+            />
+          )}
+
           <div className="post-header-info">
             <h3>{props.author}</h3>
             <p className="post-time">
